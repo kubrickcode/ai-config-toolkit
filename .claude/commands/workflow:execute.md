@@ -81,6 +81,16 @@ Expected format: `/execute-issue N` (where N is the commit number)
 - Halt execution if any non-parallel task fails
 - Provide clear error messages with context for debugging
 
+### 🧪 Prototype Code Usage (if exists)
+
+**IMPORTANT**: If validation code exists in `__prototype__/` directory:
+
+- ✅ **Reference only**: Understand implementation direction and core logic
+- ✅ **Rewrite cleanly**: Implement with code quality, structure, and principles
+- ❌ **Never copy**: Prototypes were written for validation only (ignoring cleanliness/structure)
+
+**Prototype purpose**: Proof of technical feasibility and core idea verification
+
 ---
 
 ## Document Template
@@ -168,6 +178,7 @@ File to create: `docs/work/WORK-{task-name}/summary-commit-N.md`
 
 - Read `analysis.md` for deep context (optional but recommended for complex work)
 - Read existing `summary-commit-N.md` to understand if this is a revision
+- Check `__prototype__/` directory (reference code created during validation phase)
 
 ---
 
