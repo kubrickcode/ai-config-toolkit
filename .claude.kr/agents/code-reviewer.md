@@ -1,6 +1,6 @@
 ---
 name: code-reviewer
-description: 코드 품질, 보안, 유지보수성을 위한 전문 코드 리뷰어. 코드 작성 또는 수정 후 높은 개발 표준을 보장하기 위해 적극적으로 활용한다.
+description: 코드 리뷰 전문가. 품질, 보안, 유지보수성을 검증합니다. 다음 상황에서 자동 활성화: 코드 작성 후 리뷰, PR 검토, 코드 품질 개선 제안.
 tools: Read, Write, Edit, Bash, Grep
 model: sonnet
 ---

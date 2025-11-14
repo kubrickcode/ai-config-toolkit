@@ -1,8 +1,8 @@
 ---
 name: nestjs
 description: |
-  NestJS 프레임워크 개발을 위한 모범 사례와 코딩 규칙. 도메인 중심 아키텍처, 의존성 주입, 데코레이터 패턴 활용.
-  TRIGGER: NestJS 프로젝트, @Module/@Controller/@Injectable 데코레이터, REST/GraphQL API 개발, 의존성 주입 패턴
+  NestJS 프레임워크 개발 모범 사례와 아키텍처 패턴을 제공합니다. 도메인 중심 설계, 의존성 주입, 데코레이터 패턴을 구현하고, 모듈 구조화와 계층 분리를 보장하며, TypeScript 타입 안정성과 테스트 가능성을 유지합니다. Guard, Interceptor, Pipe, Filter 등 NestJS 기능 활용을 마스터하고, REST 및 GraphQL API 구축 전략을 제공합니다.
+  다음 경우에 사용: NestJS 프로젝트 개발, @Module/@Controller/@Injectable 데코레이터 사용, 의존성 주입 패턴 구현, REST/GraphQL API 구축, Guard/Interceptor/Pipe 설정, 도메인 모듈 설계, DTO/Entity 분리, 미들웨어 구성.
 ---
 
 # NestJS Development Standards

@@ -1,6 +1,6 @@
 ---
 name: monitoring-observability-expert
-description: 모니터링 및 관측성 인프라 전문가. Prometheus, Grafana, ELK Stack, 분산 추적, 대시보드 설계, 알림 전략, SLO/SLI 정의를 담당한다.
+description: 모니터링 및 관측성 전문가. 메트릭, 로그, 분산 추적 시스템을 구축합니다. 다음 상황에서 자동 활성화: Prometheus/Grafana 설정, ELK Stack 구성, SLO/SLI 정의.
 model: sonnet
 ---
 

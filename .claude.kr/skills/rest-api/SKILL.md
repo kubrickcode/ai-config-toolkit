@@ -1,8 +1,8 @@
 ---
 name: rest-api
 description: |
-  REST API 설계 및 구현을 위한 표준 가이드. URL 구조, 페이지네이션, 정렬, 필터링, 에러 처리 등 표준화된 패턴.
-  TRIGGER: REST API 설계, 엔드포인트 정의, RESTful 원칙 적용, HTTP 상태 코드 결정, 응답 구조 설계
+  REST API 설계 및 구현 표준을 제공합니다. RESTful 원칙에 따른 URL 구조, 리소스 명명, HTTP 메서드 사용을 구현하고, 커서 기반 페이지네이션, 정렬, 필터링 패턴을 보장하며, 일관된 에러 응답과 상태 코드 전략을 유지합니다. API 버전 관리, 인증/인가, CORS 설정, OpenAPI 문서화를 마스터합니다.
+  다음 경우에 사용: REST API 설계, 엔드포인트 정의, RESTful URL 구조 설계, HTTP 메서드 선택(GET/POST/PUT/DELETE), 페이지네이션 구현, 정렬 및 필터링 파라미터 설계, HTTP 상태 코드 결정, 응답 구조 표준화, 에러 핸들링 전략 수립.
 ---
 
 # REST API Design Standards

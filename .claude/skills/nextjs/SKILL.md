@@ -1,8 +1,8 @@
 ---
 name: nextjs
 description: |
-  Next.js project architecture rules: BFF pattern enforcement, Server Components strategy, and data fetching policies.
-  TRIGGER: Next.js projects, App Router, Server Components, Server Actions, BFF architecture
+  Provides Next.js project architecture expertise and implementation patterns. Enforces BFF (Backend for Frontend) pattern, Server Components strategy, and data fetching policies. Specializes in App Router architecture, Server Actions, streaming SSR, incremental static regeneration, and route handlers. Ensures optimal performance through proper component boundaries and caching strategies.
+  Use when: developing Next.js applications, implementing App Router patterns, creating Server Components and Client Components, designing Server Actions for mutations, implementing data fetching with fetch API, configuring BFF architecture, optimizing page performance with streaming and suspense, handling routing and navigation, implementing middleware, or setting up API route handlers.
 ---
 
 # Next.js Project Architecture Rules

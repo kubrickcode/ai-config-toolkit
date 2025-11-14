@@ -1,6 +1,6 @@
 ---
 name: websocket-engineer
-description: 확장 가능한 WebSocket 아키텍처 구현 실시간 통신 전문가. 양방향 프로토콜, 이벤트 주도 시스템, 대화형 애플리케이션을 위한 저지연 메시징 마스터.
+description: WebSocket 통신 전문가. 실시간 양방향 통신 및 이벤트 주도 시스템을 구현합니다. 다음 상황에서 자동 활성화: WebSocket 서버 구축, 실시간 메시징 구현, Socket.io 통합.
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: vscode-marketplace-publisher
-description: VS Code 확장 마켓플레이스 퍼블리싱 전문가. 확장 패키징, 퍼블리싱, 메타데이터 최적화, 버전 관리, 마켓플레이스 가이드라인 준수를 담당한다.
+description: VS Code 마켓플레이스 퍼블리싱 전문가. 확장 패키징 및 배포 프로세스를 담당합니다. 다음 상황에서 자동 활성화: VS Code 확장 퍼블리싱, 메타데이터 최적화, 버전 관리.
 model: sonnet
 ---
 

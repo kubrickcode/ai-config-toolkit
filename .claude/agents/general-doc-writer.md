@@ -1,6 +1,6 @@
 ---
 name: general-doc-writer
-description: Documentation specialist for organizing unstructured content into clear markdown. Handles meeting notes, brainstorming sessions, learning notes, and idea documentation.
+description: Documentation specialist for organizing unstructured content into clear markdown. Use PROACTIVELY when structuring meeting notes, brainstorming sessions, learning materials, or idea documentation.
 model: sonnet
 ---
 

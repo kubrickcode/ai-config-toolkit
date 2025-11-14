@@ -1,6 +1,6 @@
 ---
 name: vscode-extension-specialist
-description: VS Code 확장 프로그램 개발 전문가. Extension API, UI 컴포넌트, 패키징, 마켓플레이스 배포, 런타임 최적화 전문.
+description: VS Code 확장 전문가. Extension API 및 UI 컴포넌트를 구현합니다. 다음 상황에서 자동 활성화: VS Code 확장 개발, Extension API 사용, 마켓플레이스 배포.
 model: sonnet
 ---
 

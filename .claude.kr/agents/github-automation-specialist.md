@@ -1,6 +1,6 @@
 ---
 name: github-automation-specialist
-description: GitHub 자동화 워크플로우 및 CI/CD 파이프라인 전문가
+description: GitHub 자동화 전문가. GitHub Actions 워크플로우 및 CI/CD 파이프라인을 구축합니다. 다음 상황에서 자동 활성화: GitHub Actions 작성, CI/CD 구성, 자동화 워크플로우 설계.
 model: sonnet
 ---
 

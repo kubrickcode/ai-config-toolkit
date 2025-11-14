@@ -1,8 +1,8 @@
 ---
 name: graphql
 description: |
-  GraphQL API 스키마 설계 및 구현 가이드. 타입 정의, 쿼리/뮤테이션 설계, 페이지네이션, 에러 처리 등 표준.
-  TRIGGER: GraphQL 스키마 작성, 타입 정의, Resolver 구현, Connection 설계, N+1 문제 해결
+  GraphQL API 스키마 설계 및 구현 전문성을 제공합니다. 타입 시스템 설계, 쿼리/뮤테이션 구조화, Relay 스타일 커넥션 페이지네이션을 구현하고, N+1 문제 해결 전략과 DataLoader 패턴을 보장하며, 효율적인 리졸버 로직과 에러 처리를 유지합니다. 스키마 버전 관리와 퍼포먼스 최적화를 마스터합니다.
+  다음 경우에 사용: GraphQL 스키마 작성(.graphql 파일), 타입 정의(Type/Input/Interface), 리졸버 구현, Connection 기반 페이지네이션 설계, N+1 쿼리 문제 해결, DataLoader 구성, 뮤테이션 패턴 설계, GraphQL 구독 구현.
 ---
 
 # GraphQL API Standards

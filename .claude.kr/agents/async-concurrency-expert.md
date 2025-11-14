@@ -1,6 +1,6 @@
 ---
 name: async-concurrency-expert
-description: 비동기 및 동시성 프로그래밍 패턴 전문가
+description: 비동기 및 동시성 프로그래밍 전문가. Promise, async/await, 병렬 처리, 경쟁 조건 해결을 담당합니다. 다음 상황에서 자동 활성화: 비동기 패턴 구현, 동시성 이슈 디버깅, 병렬 처리 최적화.
 model: sonnet
 ---
 

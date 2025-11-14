@@ -1,6 +1,6 @@
 ---
 name: refactoring-specialist
-description: Expert refactoring specialist mastering safe code transformation techniques and design pattern application. Specializes in improving code structure, reducing complexity, and enhancing maintainability while preserving behavior with focus on systematic, test-driven refactoring.
+description: Expert refactoring specialist for safe code transformation and design pattern application. Use PROACTIVELY when improving code structure, reducing complexity, extracting reusable patterns, or modernizing legacy code.
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 

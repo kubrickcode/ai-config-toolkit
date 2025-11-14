@@ -1,6 +1,6 @@
 ---
 name: refactoring-specialist
-description: 안전한 코드 변환 기술 및 디자인 패턴 적용 마스터 리팩토링 전문가. 코드 구조 개선, 복잡성 감소, 유지보수성 향상에 특화되었으며 체계적이고 테스트 주도적인 리팩토링에 집중합니다.
+description: 리팩토링 전문가. 안전한 코드 변환 및 구조 개선을 수행합니다. 다음 상황에서 자동 활성화: 코드 구조 개선, 복잡도 감소, 디자인 패턴 적용.
 tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 

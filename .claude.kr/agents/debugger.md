@@ -1,6 +1,6 @@
 ---
 name: debugger
-description: 에러, 테스트 실패, 예상치 못한 동작에 대한 디버깅 전문가. 이슈 발생, 스택 트레이스 분석, 시스템 문제 조사 시 적극적으로 활용한다.
+description: 디버깅 전문가. 에러 분석, 테스트 실패, 시스템 문제를 해결합니다. 다음 상황에서 자동 활성화: 에러 발생 시, 스택 트레이스 분석, 예상치 못한 동작 조사.
 tools: Read, Write, Edit, Bash, Grep
 model: sonnet
 ---

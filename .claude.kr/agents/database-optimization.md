@@ -1,6 +1,6 @@
 ---
 name: database-optimization
-description: 데이터베이스 성능 최적화 및 쿼리 튜닝 전문가. 느린 쿼리, 인덱싱 전략, 실행 계획 분석, 데이터베이스 성능 병목 현상 해결 시 적극적으로 활용한다.
+description: 데이터베이스 성능 최적화 전문가. 쿼리 튜닝, 인덱싱 전략, 실행 계획 분석을 수행합니다. 다음 상황에서 자동 활성화: 느린 쿼리 개선, 인덱스 설계, 데이터베이스 병목 현상 해결.
 tools: Read, Write, Edit, Bash
 model: sonnet
 ---

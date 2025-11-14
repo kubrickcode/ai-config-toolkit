@@ -1,8 +1,8 @@
 ---
 name: react
 description: |
-  React 컴포넌트 개발을 위한 모범 사례와 코딩 규칙. 컴포넌트 구조, 상태 관리, Hook 사용법, 성능 최적화.
-  TRIGGER: React 컴포넌트, .tsx/.jsx 파일, useState/useEffect Hook, 상태 관리, 조건부 렌더링, props 설계
+  React 컴포넌트 개발 표준과 모범 사례를 제공합니다. 적절한 훅 사용, 상태 관리 패턴, 성능 최적화 기법을 통해 컴포넌트 품질을 보장합니다. 함수형 컴포넌트, 커스텀 훅, Context API, 메모이제이션 전략, 접근성 준수를 전문으로 합니다. useState/useReducer/useContext로 상태 관리를 구현하고, useMemo/useCallback/React.memo로 성능을 최적화합니다.
+  다음 경우에 사용: React 컴포넌트 개발(.jsx/.tsx 파일), 커스텀 훅 생성, useState/useReducer/useContext로 상태 관리 구현, useMemo/useCallback/React.memo로 성능 최적화, useEffect로 사이드 이펙트 처리, 컴포넌트 props 및 인터페이스 설계, 조건부 렌더링 패턴 구현, React Testing Library 테스트, TypeScript 타입 안전 컴포넌트 통합.
 ---
 
 # React Development Standards

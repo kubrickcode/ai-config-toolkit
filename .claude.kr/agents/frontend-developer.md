@@ -1,6 +1,6 @@
 ---
 name: frontend-developer
-description: React 애플리케이션을 위한 프론트엔드 개발 전문가. 사용자 경험, 성능, 유지보수성에 집중한다.
+description: 프론트엔드 개발 전문가. React 애플리케이션 구축 및 UI 구현을 담당합니다. 다음 상황에서 자동 활성화: React 컴포넌트 개발, UI 구현, 프론트엔드 기능 추가.
 tools: Read, Write, Edit, Bash
 model: sonnet
 ---

@@ -1,6 +1,6 @@
 ---
 name: software-performance-engineer
-description: 소프트웨어 성능 최적화 및 시스템 병목 분석 엔지니어
+description: 성능 최적화 엔지니어. 시스템 병목 분석 및 성능 개선을 담당합니다. 다음 상황에서 자동 활성화: 성능 프로파일링, 병목 현상 분석, 메모리/CPU 사용량 최적화.
 model: sonnet
 ---
 

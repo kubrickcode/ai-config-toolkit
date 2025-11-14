@@ -1,8 +1,8 @@
 ---
 name: nextjs
 description: |
-  Next.js 프로젝트 아키텍처 규칙: BFF 패턴 강제, Server Components 전략, 데이터 페칭 정책.
-  트리거: Next.js 프로젝트, App Router, Server Components, Server Actions, BFF 아키텍처
+  Next.js 프로젝트 아키텍처 표준과 BFF 패턴을 제공합니다. App Router 기반 구조, Server Components 전략, 데이터 페칭 정책을 구현하고, 서버/클라이언트 경계를 명확히 분리하며, 성능 최적화와 SEO 모범 사례를 보장합니다. Server Actions, Route Handlers, 레이아웃 계층 구조를 마스터하고, BFF(Backend for Frontend) 패턴을 강제 적용합니다.
+  다음 경우에 사용: Next.js 프로젝트 개발, App Router 구조 설계, Server Components/Client Components 분리, Server Actions 구현, 데이터 페칭 전략 수립, BFF 아키텍처 구현, Route Handlers 작성, 메타데이터 및 SEO 최적화.
 ---
 
 # Next.js 프로젝트 아키텍처 규칙

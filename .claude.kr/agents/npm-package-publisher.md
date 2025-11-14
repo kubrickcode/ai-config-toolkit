@@ -1,6 +1,6 @@
 ---
 name: npm-package-publisher
-description: NPM 패키지 퍼블리싱 및 설정 전문가. package.json 설정, 시맨틱 버저닝, CI/CD 자동화, 스코프 패키지, 퍼블리싱 워크플로우를 담당한다.
+description: NPM 패키지 퍼블리싱 전문가. package.json 구성 및 자동화된 릴리스 프로세스를 구축합니다. 다음 상황에서 자동 활성화: NPM 패키지 배포, 버전 관리, 퍼블리싱 워크플로우 설정.
 model: sonnet
 ---
 

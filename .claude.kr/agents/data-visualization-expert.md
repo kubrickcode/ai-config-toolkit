@@ -1,6 +1,6 @@
 ---
 name: data-visualization-expert
-description: 데이터 시각화 컴포넌트 구현 전문가
+description: 데이터 시각화 전문가. 차트, 그래프, 대시보드 컴포넌트를 구현합니다. 다음 상황에서 자동 활성화: D3.js/Chart.js 시각화 구현, 대시보드 개발, 인터랙티브 차트 제작.
 model: sonnet
 ---
 

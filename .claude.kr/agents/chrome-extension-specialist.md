@@ -1,6 +1,6 @@
 ---
 name: chrome-extension-specialist
-description: Chrome 확장 프로그램 아키텍처 및 구현 전문가
+description: Chrome 확장 프로그램 전문가. Manifest V3, 메시지 패싱, 콘텐츠 스크립트를 담당합니다. 다음 상황에서 자동 활성화: Chrome 확장 개발, manifest.json 작성, background/content script 구현.
 model: sonnet
 ---
 

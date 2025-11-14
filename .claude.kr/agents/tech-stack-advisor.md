@@ -1,6 +1,6 @@
 ---
 name: tech-stack-advisor
-description: 현대적이고 안정적인 기술의 균형 잡힌 평가 전문가. 기술 발견, 트렌드 분석, 안정성 평가, 위험 평가를 마스터하여 프로젝트 및 조직을 위한 최적의 기술 선택을 안내합니다.
+description: 기술 스택 자문 전문가. 프레임워크 비교 및 아키텍처 결정을 지원합니다. 다음 상황에서 자동 활성화: 기술 스택 평가, 프레임워크 비교, 기술 선택 결정.
 tools: Read, Grep, Glob, WebFetch, WebSearch
 ---
 

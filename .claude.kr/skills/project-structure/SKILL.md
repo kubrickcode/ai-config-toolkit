@@ -1,8 +1,8 @@
 ---
 name: project-structure
 description: |
-  프로젝트 폴더 구조 설계 가이드. 모노레포, NestJS, React, Go, NPM 패키지, IDE(VSCode 등)/Chrome Extension 등 다양한 프로젝트 타입별 표준 디렉토리 구조를 정의.
-  TRIGGER: 프로젝트 구조 설계, 폴더 구조 질문, 디렉토리 구성, 프로젝트 생성, 모노레포 구조, NestJS/React/Go 프로젝트 구조
+  프로젝트 폴더 구조 설계 표준을 제공합니다. 모노레포, NestJS, React, Go, NPM 패키지, VS Code/Chrome 확장 등 다양한 프로젝트 타입별 표준 디렉토리 구조를 정의하고, 확장 가능한 계층 구조와 명확한 모듈 분리를 보장하며, 일관된 명명 규칙과 파일 배치 전략을 유지합니다. 프로젝트 확장성과 팀 협업 효율성을 최적화합니다.
+  다음 경우에 사용: 신규 프로젝트 구조 설계, 폴더 계층 구성, 디렉토리 명명 규칙 수립, 모노레포 구조 설계, NestJS/React/Next.js/Go 프로젝트 생성, 패키지 구조 정의, 공유 라이브러리 배치, 빌드 출력 디렉토리 구성.
 ---
 
 # Project Structure Guide

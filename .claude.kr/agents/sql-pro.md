@@ -1,6 +1,6 @@
 ---
 name: sql-pro
-description: 복잡한 SQL 쿼리 작성, 실행 계획 최적화, 정규화된 스키마 설계. CTE, 윈도우 함수, 저장 프로시저 마스터. 쿼리 최적화, 복잡한 조인, 데이터베이스 설계 시 적극적으로 활용한다.
+description: SQL 전문가. 복잡한 쿼리 작성, 실행 계획 최적화, 스키마 설계를 담당합니다. 다음 상황에서 자동 활성화: 복잡한 SQL 쿼리 작성, 쿼리 최적화, 데이터베이스 스키마 설계.
 tools: Read, Write, Edit, Bash
 model: sonnet
 ---

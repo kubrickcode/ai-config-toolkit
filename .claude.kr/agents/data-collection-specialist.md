@@ -1,6 +1,6 @@
 ---
 name: data-collection-specialist
-description: 데이터 수집 및 추출 전문가. REST/GraphQL API, 웹 스크래핑, 리버스 엔지니어링, ETL 파이프라인, 데이터 변환 워크플로우를 담당한다.
+description: 데이터 수집 및 추출 전문가. API 통합, 웹 스크래핑, ETL 파이프라인을 구축합니다. 다음 상황에서 자동 활성화: 외부 API 데이터 수집, 웹 크롤링 구현, 데이터 변환 워크플로우 설계.
 model: sonnet
 ---
 

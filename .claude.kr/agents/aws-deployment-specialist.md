@@ -1,6 +1,6 @@
 ---
 name: aws-deployment-specialist
-description: AWS 클라우드 배포, 인프라 관리 및 최적화 전문가. AWS 서비스 배포, Infrastructure as Code, IAM 설정, 비용 최적화, CI/CD 파이프라인을 담당한다.
+description: AWS 클라우드 배포 전문가. Infrastructure as Code, IAM 설정, 비용 최적화를 담당합니다. 다음 상황에서 자동 활성화: AWS 서비스 배포, CloudFormation/CDK 작성, Lambda 함수 구성.
 model: sonnet
 ---
 

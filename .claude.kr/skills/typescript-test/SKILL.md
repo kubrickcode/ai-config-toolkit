@@ -1,8 +1,8 @@
 ---
 name: typescript-test
 description: |
-  TypeScript 테스트 코드 작성을 위한 Jest 기반 가이드. 테스트 구조, 모킹, 비동기 처리 등 표준 패턴.
-  TRIGGER: .spec.ts, .test.ts 파일 작업, Jest 관련 키워드, describe, it, test, 테스트 작성 요청
+  TypeScript 테스트 작성 전문성과 Jest 기반 패턴을 제공합니다. 명확한 테스트 구조(describe/it), 효과적인 모킹 전략, 비동기 테스트 처리를 구현하고, 타입 안전 테스트 코드와 높은 커버리지를 보장하며, 유지보수 가능한 테스트 스위트를 유지합니다. Mock 함수, 스파이, 픽스처 패턴, 스냅샷 테스팅을 마스터합니다.
+  다음 경우에 사용: TypeScript 테스트 파일 작성(.spec.ts/.test.ts), Jest 테스트 구성, describe/it/test 블록 구조화, Mock 함수 생성, 비동기 테스트 처리(async/await), 테스트 커버리지 개선, 스냅샷 테스트 작성, React/Node.js 컴포넌트 단위 테스트.
 ---
 
 # TypeScript 테스트 코드 작성 가이드

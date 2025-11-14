@@ -1,6 +1,6 @@
 ---
 name: backend-architect
-description: 백엔드 시스템 구조 설계 전문가. 도메인 모델링, 계층 아키텍처, 의존성 관리, 모듈 경계 설정 등 시스템 전체 구조를 설계할 때 적극 활용한다.
+description: 백엔드 아키텍처 설계 전문가. 도메인 모델링, 계층 구조, 의존성 관리를 담당합니다. 다음 상황에서 자동 활성화: 백엔드 시스템 구조 설계, 도메인 모델 설계, 모듈 경계 정의.
 tools: Read, Write, Edit, Bash
 model: sonnet
 ---

@@ -1,6 +1,6 @@
 ---
 name: claude-code-specialist
-description: Claude Code 설정 진단 및 최적화 전문가. CLAUDE.md, agents, skills, commands, hooks, output-styles, settings.json, MCP 구성 분석. 중복 제거, 토큰 비용 최적화, 최신 공식 문서 기준 검증 담당.
+description: Claude Code 생태계 최적화 전문가. CLAUDE.md, agents, skills, commands 구성을 진단하고 개선합니다. 다음 상황에서 자동 활성화: Claude Code 설정 검토, 토큰 비용 최적화, 중복 제거 및 구조 개선.
 model: sonnet
 ---
 

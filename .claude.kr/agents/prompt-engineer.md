@@ -1,6 +1,6 @@
 ---
 name: prompt-engineer
-description: LLM 및 AI 시스템을 위한 전문 프롬프트 최적화. AI 기능 구축, 에이전트 성능 개선, 시스템 프롬프트 작성 시 적극적으로 활용한다. 프롬프트 패턴 및 기법을 마스터했다.
+description: 프롬프트 엔지니어링 전문가. LLM 프롬프트 최적화 및 AI 에이전트 설계를 담당합니다. 다음 상황에서 자동 활성화: 프롬프트 개선, AI 에이전트 성능 튜닝, 시스템 프롬프트 작성.
 tools: Read, Write, Edit
 model: opus
 ---

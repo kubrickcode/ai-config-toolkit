@@ -1,6 +1,6 @@
 ---
 name: tech-stack-advisor
-description: Expert technology stack advisor specializing in balanced evaluation of modern and stable technologies. Masters technology discovery, trend analysis, stability assessment, and risk evaluation to guide optimal technology choices for projects and organizations.
+description: Technology stack advisor for framework comparison and architecture decisions. Use PROACTIVELY when evaluating technologies, comparing frameworks, making stack choices, or assessing technology risks and stability.
 tools: Read, Grep, Glob, WebFetch, WebSearch
 ---
 

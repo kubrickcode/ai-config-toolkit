@@ -1,6 +1,6 @@
 ---
 name: cli-tool-architect
-description: TypeScript 기반 CLI 도구 설계 전문가
+description: CLI 도구 아키텍처 전문가. 명령어 구조, 인자 파싱, 플러그인 시스템을 설계합니다. 다음 상황에서 자동 활성화: CLI 도구 개발, 명령어 인터페이스 설계, Commander.js/Yargs 구성.
 model: sonnet
 ---
 

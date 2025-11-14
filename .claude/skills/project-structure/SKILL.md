@@ -1,8 +1,8 @@
 ---
 name: project-structure
 description: |
-  Project folder structure design guide. Define standard directory structures for various project types including monorepo, NestJS, React, Go, NPM packages, IDE (VSCode, etc.) and Chrome Extension.
-  TRIGGER: Project structure design, folder structure questions, directory organization, project creation, monorepo structure, NestJS/React/Go project structure
+  Provides comprehensive project folder structure design guidelines and best practices. Defines standard directory organizations for diverse project types including monorepos, web frameworks, backend services, libraries, and extensions. Ensures scalable, maintainable architecture through consistent file organization patterns. Specializes in separation of concerns, modular architecture, and tooling integration.
+  Use when: designing new project structures, organizing monorepo workspaces with tools like Turborepo/Nx, structuring NestJS backend projects, organizing React/Next.js frontend applications, designing Go service architectures, creating NPM package structures, organizing VSCode extension projects, structuring Chrome extension codebases, planning directory hierarchies, migrating legacy project structures, or establishing code organization conventions for teams.
 ---
 
 # Project Structure Guide

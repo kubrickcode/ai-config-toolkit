@@ -1,6 +1,6 @@
 ---
 name: react-shared-component-architect
-description: React 공유 컴포넌트 아키텍처 설계 전문가
+description: React 공유 컴포넌트 전문가. 재사용 가능한 컴포넌트 라이브러리를 설계합니다. 다음 상황에서 자동 활성화: 공유 컴포넌트 라이브러리 구축, 디자인 시스템 구현, 컴포넌트 API 설계.
 model: sonnet
 ---
 

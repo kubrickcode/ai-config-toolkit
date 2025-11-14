@@ -1,8 +1,8 @@
 ---
 name: typescript
 description: |
-  TypeScript 코드 작성을 위한 코딩 컨벤션과 모범 사례. 타입 안정성, 클린 코드, 일관된 스타일을 보장.
-  TRIGGER: .ts, .tsx 파일 작업, TypeScript 관련 질문, 타입 정의, 인터페이스 설계, React/Node.js 개발
+  포괄적인 TypeScript 개발 전문성과 코딩 표준을 제공합니다. 엄격한 타입 체킹을 통한 타입 안정성을 보장하고, 클린 코드 패턴을 구현하며, 일관된 아키텍처 결정을 유지합니다. 제네릭, 조건부 타입, 매핑된 타입, 템플릿 리터럴 타입을 포함한 고급 타입 시스템 기능을 전문으로 합니다.
+  다음 경우에 사용: TypeScript 파일 작업(.ts/.tsx), 타입 정의 및 인터페이스 작성, 제네릭 프로그래밍 패턴 구현, 타입 안전 API 설계, 복잡한 타입 변환 처리, TypeScript와 React/Vue/Angular 프레임워크 통합, strict 모드 설정 구성, 타입 에러 해결, 대규모 코드베이스의 타입 성능 최적화.
 ---
 
 # TypeScript Coding Standards
