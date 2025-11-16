@@ -3,7 +3,7 @@ set dotenv-load := true
 root_dir := justfile_directory()
 
 deps:
-    yarn install
+    pnpm install
 
 lint target="all":
     #!/usr/bin/env bash
