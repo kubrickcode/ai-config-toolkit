@@ -1,5 +1,5 @@
 ---
-description: Playwright MCP를 사용하여 순차적으로 UI E2E 테스트 구현, 버그 발견 시 중단
+description: Playwright MCP를 사용하여 순차적으로 UI E2E 테스트 구현, 버그 발견 시 문서화 후 계속
 ---
 
 # UI E2E 테스트 구현 커맨드
@@ -10,7 +10,7 @@ description: Playwright MCP를 사용하여 순차적으로 UI E2E 테스트 구
 $ARGUMENTS
 ```
 
-테스트 번호를 추출하고 추가 컨텍스트가 있으면 고려합니다 (비어있지 않은 경우).
+테스트 번호를 추출하고 (지정된 경우) 추가 컨텍스트가 있으면 고려합니다 (비어있지 않은 경우).
 
 ---
 
@@ -20,10 +20,13 @@ $ARGUMENTS
    - `docs/e2e-ui/test-targets.md` 존재 확인 (영문 버전, AI용)
    - 없으면 ERROR: "먼저 /e2e-ui:research를 실행하세요"
 
-2. **프로젝트 타입 감지 및 스킬 로드**:
-   - package.json 분석으로 프레임워크 감지 (React/Next.js/etc)
-   - 감지된 프레임워크에 맞는 스킬 로드
-   - 항상 `.claude/skills/typescript` 및 `.claude/skills/typescript-test` 로드 (있는 경우)
+2. **프로젝트 설정 읽기**:
+   - `playwright.config.ts` (또는 `.js`) 읽기:
+     - `testDir` 또는 `testMatch`에서 테스트 디렉토리 추출
+     - `webServer.url` 또는 `use.baseURL`에서 base URL 추출
+   - `package.json` 읽기 (같은 디렉토리):
+     - dependencies에서 프레임워크 감지: `next`, `react`, `vue`, `svelte` 등
+   - **폴백**: playwright.config를 찾을 수 없는 경우, 사용자에게 테스트 디렉토리와 base URL 요청
 
 3. **테스트 대상 로드**:
    - 문서에서 테스트 시나리오 읽기
@@ -34,17 +37,19 @@ $ARGUMENTS
    - 각 테스트 시나리오에 대해 (순서대로):
      a. **수동 테스트 단계**: Playwright MCP로 동작 검증
      b. **버그 감지**: 이슈 확인
-     c. **버그 발견 시 중단**: 버그 발견 시 즉시 보고 후 중단
-     d. **코드 작성 단계**: 통과하면 Playwright 테스트 코드 작성
+     c. **버그 처리**: 버그 발견 시 이중 언어 버그 리포트 생성(ko.md + md) 후 계속
+     d. **코드 작성 단계**: 통과하면 Playwright 테스트 코드 작성 (버그 시 건너뜀)
      e. **진행 상황 보고**: summary 문서 업데이트
 
-5. **Summary 생성**:
+5. **문서 생성**:
    - 완료된 각 테스트에 대해 `docs/e2e-ui/summary-test-N.md` 생성
+   - 버그에 대해 `docs/e2e-ui/bug-report-test-N.ko.md`와 `bug-report-test-N.md` 생성
    - 전체 진행 상황 추적
 
 6. **결과 보고**:
    - 완료된 테스트 목록
-   - 버그 발견 시 보고 (세부사항 포함)
+   - 발견된 버그 목록 (세부사항 포함)
+   - 생성된 테스트 코드 요약
    - 다음 단계 안내
 
 ---
@@ -53,7 +58,7 @@ $ARGUMENTS
 
 ### 🚨 버그 감지 (중요)
 
-**다음 상황 발생 시 즉시 중단 및 보고**:
+**다음 상황 발생 시 문서화 후 계속**:
 
 1. **페이지 로드 실패**:
    - 네비게이션 타임아웃
@@ -81,7 +86,12 @@ $ARGUMENTS
    - UI 요소 누락
    - 기능 고장
 
-**버그 보고 형식**:
+**버그 리포트 형식** (ko.md와 md 버전 모두 생성):
+
+생성할 파일:
+
+- `docs/e2e-ui/bug-report-test-N.ko.md` (한국어)
+- `docs/e2e-ui/bug-report-test-N.md` (영어)
 
 ```markdown
 ## 🐛 버그 발견
@@ -112,17 +122,20 @@ $ARGUMENTS
 
 **영향**:
 [사용자에게 미치는 영향]
-
-**버그 발견 전 완료된 테스트**:
-
-- [완료된 테스트 목록]
 ```
+
+버그 리포트 생성 후, 중단하지 말고 **다음 테스트로 계속 진행**합니다.
 
 ### ✅ 반드시 해야 할 것
 
+- **`playwright.config.ts`와 `package.json` 먼저 읽기** 프로젝트 설정 가져오기
+  - playwright.config.ts: 테스트 디렉토리, base URL, 테스트 설정
+  - package.json: 프레임워크 감지
 - 테스트를 **한 번에 하나씩** (순차적으로) 실행
 - 코드 작성 전 **실제 테스트**에 Playwright MCP 사용
-- 버그 발견 시 **즉시 중단**
+- 버그 발견 시 **이중 언어 버그 리포트 생성** (ko.md + md)
+- 버그 문서화 후 **테스트 계속**
+- **playwright.config.ts에서 지정된 디렉토리**에 테스트 코드 작성 (testDir 또는 testMatch)
 - 깔끔하고 유지보수 가능한 테스트 코드 작성
 - TypeScript 및 테스트 코딩 표준 준수
 - 각 테스트에 대한 summary 생성
@@ -130,10 +143,14 @@ $ARGUMENTS
 
 ### ❌ 절대 하지 말아야 할 것
 
+- **`playwright.config.ts` 읽기 건너뛰기** (주요 정보 출처)
 - 여러 테스트 병렬 실행
 - 수동 검증 단계 건너뛰기
-- 버그 발견 후 계속 테스트
+- **버그 발견 후 테스트 중단** (계속 진행해야 함)
 - 동작 검증 없이 테스트 코드 작성
+- 단일 언어 버그 리포트 생성 (이중 언어 필수)
+- playwright.config에서 지정한 디렉토리 밖에 테스트 코드 작성
+- base URL이나 테스트 디렉토리 하드코딩
 - 콘솔 에러나 경고 무시
 - 엣지 케이스 건너뛰기
 
@@ -158,14 +175,15 @@ $ARGUMENTS
 
 3. **결정 시점**:
    - ✅ **통과하면**: 테스트 코드 작성 진행
-   - 🐛 **버그 발견**: 중단, 보고, 종료
+   - 🐛 **버그 발견**: 이중 언어 버그 리포트 생성, 다음 테스트로 계속
 
 4. **테스트 코드 작성** (통과한 경우에만):
 
    ```typescript
-   // 적절한 위치에 테스트 파일 생성
+   // playwright.config.ts에서 지정된 디렉토리에 테스트 파일 생성 (testDir 또는 testMatch)
    // 프로젝트 테스트 패턴 따르기
    // assertion과 에러 처리 포함
+   // testMatch 패턴의 네이밍 규칙 따르기 (예: *.spec.ts, *.e2e.ts)
    ```
 
 5. **문서화**:
@@ -276,15 +294,21 @@ test("시나리오 이름", async ({ page }) => {
 
 ---
 
-## 버그 보고 템플릿
+## 버그 리포트 템플릿
 
-버그 발견 시 생성: `docs/e2e-ui/bug-report-test-N.md`
+**버그 발견 시 이중 언어 버그 리포트 생성**:
+
+생성할 파일:
+- `docs/e2e-ui/bug-report-test-N.ko.md` (한국어 버전)
+- `docs/e2e-ui/bug-report-test-N.md` (영어 버전)
+
+### 한국어 버전 템플릿
 
 ```markdown
-# 🐛 버그 보고: 테스트 N
+# 🐛 버그 리포트: Test N
 
-> **발견일**: [YYYY-MM-DD HH:mm]
-> **테스트**: 테스트 N: [시나리오 이름]
+> **발견일시**: [YYYY-MM-DD HH:mm]
+> **테스트**: Test N: [시나리오 이름]
 > **우선순위**: [Critical/High/Medium]
 
 ---
@@ -295,22 +319,22 @@ test("시나리오 이름", async ({ page }) => {
 
 ---
 
-## 🔍 세부사항
+## 🔍 상세 내용
 
-**테스트 중이던 내용**:
+**테스트 대상**:
 [테스트 시나리오 설명]
 
 **재현 단계**:
 
 1. [단계 1]
 2. [단계 2]
-3. [여기서 버그 발생]
+3. [버그 발생 지점]
 
 **예상 동작**:
-[일어나야 할 일]
+[기대했던 동작]
 
 **실제 동작**:
-[실제로 일어난 일]
+[실제 발생한 동작]
 
 ---
 
@@ -333,7 +357,7 @@ test("시나리오 이름", async ({ page }) => {
 
 ---
 
-## 💥 영향
+## 💥 영향도
 
 **사용자 영향**:
 [최종 사용자에게 미치는 영향]
@@ -343,37 +367,98 @@ test("시나리오 이름", async ({ page }) => {
 
 ---
 
-## ✅ 버그 발견 전 완료된 테스트
+## 🔄 다음 단계
 
-이 버그가 발견되기 전에 다음 테스트들이 성공적으로 완료되었습니다:
+1. 사용자가 버그 리포트 검토
+2. 개발자가 버그 수정
+3. 수정 후 `/e2e-ui:execute N`으로 이 테스트부터 재개 가능
 
-1. 테스트 1: [이름] - ✅ 통과
-2. 테스트 2: [이름] - ✅ 통과
-   ...
+````
 
-**생성된 테스트 코드**:
+### 영어 버전 템플릿
 
-- `[path/to/test1.spec.ts]`
-- `[path/to/test2.spec.ts]`
+```markdown
+# 🐛 Bug Report: Test N
 
-**이 테스트들은 커밋할 준비가 되었습니다.**
+> **Discovered**: [YYYY-MM-DD HH:mm]
+> **Test**: Test N: [scenario name]
+> **Priority**: [Critical/High/Medium]
 
 ---
 
-## 🔄 다음 단계
+## 📋 Bug Summary
 
-1. 사용자가 이 버그 보고서 검토
-2. 개발자가 버그 수정
-3. 수정 후 다시 실행: `/e2e-ui:execute N`으로 이 테스트부터 계속
+[one sentence description of bug]
+
+---
+
+## 🔍 Details
+
+**What Was Being Tested**:
+[test scenario description]
+
+**Reproduction Steps**:
+
+1. [step 1]
+2. [step 2]
+3. [bug occurs here]
+
+**Expected Behavior**:
+[what should happen]
+
+**Actual Behavior**:
+[what actually happened]
+
+---
+
+## 📸 Evidence
+
+**Screenshots**:
+- [screenshot 1]: `path/to/screenshot.png`
+
+**Console Errors**:
+````
+
+[paste console error messages]
+
+````
+
+**Page State**:
+```yaml
+[page snapshot or relevant HTML]
+````
+
+---
+
+## 💥 Impact
+
+**User Impact**:
+[impact on end users]
+
+**Severity**:
+[why this priority level]
+
+---
+
+## 🔄 Next Steps
+
+1. User reviews this bug report
+2. Developer fixes the bug
+3. After fix, resume: `/e2e-ui:execute N` to continue from this test
 
 ```
+
+**중요**: 버그 리포트 생성 후, 중단하지 말고 다음 테스트로 계속 진행합니다.
 
 ---
 
 ## 실행 흐름
 
 ### 초기화
-1. 프로젝트 타입 감지 및 적절한 스킬 로드
+1. **프로젝트 설정 파일 읽기**:
+   - `playwright.config.ts`: 테스트 디렉토리, base URL, testMatch 패턴에서 네이밍 규칙 추출
+   - `package.json`: dependencies에서 프레임워크 감지 (next, react, vue 등)
+   - **폴백**: config를 찾을 수 없는 경우, 사용자에게 테스트 디렉토리와 base URL 요청
 2. 테스트 대상 문서 로드 (docs/e2e-ui/test-targets.md - 영문 버전, AI용)
 3. 실행할 테스트 결정
 4. 기존 summary 확인 (재개 기능)
@@ -389,20 +474,25 @@ test("시나리오 이름", async ({ page }) => {
    - 동작이 올바른가?
    - 에러가 있나?
 4. **결정**:
-   - 버그면: 버그 보고서 생성, 중단, 종료
-   - 통과면: 계속
-5. **코드 작성**:
-   - 테스트 파일 생성
+   - 버그면: 이중 언어 버그 리포트 생성 (ko.md + md), 다음 테스트로 계속
+   - 통과면: 코드 작성 계속
+5. **코드 작성** (통과한 경우에만):
+   - playwright.config의 디렉토리에 테스트 파일 생성
    - 테스트 로직 구현
    - 코딩 표준 준수
+   - testMatch 패턴의 네이밍 규칙 따르기
 6. **문서화**:
-   - summary 생성
+   - summary 생성 (통과한 경우)
+   - 버그 리포트 생성 (버그 발견 시)
    - 발견사항 기록
 7. **진행**: "테스트 N 완료. 테스트 N+1로 이동 중..."
 
 ### 완료
-- 모든 테스트 통과: 축하, 요약 제공
-- 버그 발견: 버그 보고서 제공, 완료된 테스트 목록 제공
+- 종합적인 요약 제공:
+  - 생성된 코드와 함께 통과한 테스트 목록
+  - 리포트 링크와 함께 발견된 버그 목록
+  - 달성한 전체 커버리지
+  - 다음 단계 권장사항
 
 ---
 

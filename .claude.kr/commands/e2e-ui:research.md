@@ -15,7 +15,7 @@ description: UI E2E 테스트 대상 리서치 및 테스트 시나리오 문서
 $ARGUMENTS
 ```
 
-사용자 입력에서 포트 번호를 추출하고 추가 컨텍스트가 있으면 고려합니다 (비어있지 않은 경우).
+추가 컨텍스트가 있으면 고려합니다 (비어있지 않은 경우). 포트와 base URL은 `playwright.config.ts`에서 추출됩니다.
 
 ---
 
@@ -37,40 +37,45 @@ $ARGUMENTS
 
 ### 1. 사전 준비 및 컨텍스트 수집
 
-#### 프로젝트 타입 감지
+#### 프로젝트 타입 및 설정 감지
 
-**package.json 분석**:
+**`playwright.config.ts` (또는 `.js`)와 `package.json` 함께 읽기**:
 
-- `"next"` → Next.js 프로젝트
-- `"react"` + `"react-router"` → React SPA
+`playwright.config.ts`에서:
 
-**파일 구조 분석**:
+- Base URL 및 포트 (`webServer.url` 또는 `use.baseURL`에서)
+- 테스트 디렉토리 위치 (`testDir` 또는 `testMatch`에서)
+- 브라우저 설정 및 테스트 설정
 
-- `app/` 디렉토리 → Next.js App Router
-- `pages/` 디렉토리 → Next.js Pages Router 또는 React
+`package.json`에서 (playwright.config.ts와 같은 디렉토리):
 
-#### 적절한 Skills 자동 로드
+- dependencies를 통한 프레임워크 감지: `next`, `react`, `vue`, `svelte`, `@angular/core` 등
+- 빌드 도구: `vite`, `webpack`, `turbopack` 등
+- webServer 명령어에서 추론하는 것보다 더 신뢰할 수 있음
 
-감지된 프레임워크에 따라:
+**폴백** (playwright.config를 찾을 수 없는 경우):
 
-- Next.js → `.claude/skills/nextjs` (있는 경우)
-- React → `.claude/skills/react` (있는 경우)
-- 항상 `.claude/skills/typescript` 및 `.claude/skills/typescript-test` 로드 (있는 경우)
+- `package.json` dependencies와 scripts 분석
+- 디렉토리 패턴을 확인하여 프레임워크 추론
+
+AI는 두 파일을 함께 사용하여 정확한 프로젝트 이해를 해야 합니다.
 
 #### 백엔드 비즈니스 도메인 파악 (해당되는 경우)
 
 **백엔드 존재 여부 감지**:
 
-- `backend/`, `server/`, `api/` 디렉토리 존재
+- 백엔드 관련 디렉토리 (예: `backend/`, `server/`, `api/` 또는 유사한 이름)
 - package.json에 서버 프레임워크 (Express, Fastify, NestJS 등)
 - docker-compose.yml에 백엔드 서비스
+
+AI는 특정 명명 규칙에 관계없이 백엔드 컴포넌트를 유연하게 식별해야 합니다.
 
 **프로젝트 분석**:
 
 - `README.md`: 프로젝트 개요, 아키텍처
 - `CLAUDE.md`: 도메인 지식, 비즈니스 규칙
-- 백엔드가 있는 경우 REST API 혹은 GraphQL API 엔드포인트
-- 백엔드가 있는 경우 데이터 모델 확인
+- REST API 또는 GraphQL API 엔드포인트 (백엔드가 있는 경우)
+- 데이터 모델 (백엔드가 있는 경우)
 - OpenAPI/Swagger 문서 (있는 경우)
 
 **파악해야 할 정보**:
@@ -82,8 +87,15 @@ $ARGUMENTS
 
 ### 2. 기존 UI E2E 테스트 파일 분석 (컨텍스트 파악용)
 
-- Glob으로 테스트 파일 검색 (`**/*.e2e.{ts,tsx,js,jsx}`, `**/*.spec.{ts,tsx,js,jsx}`, `tests/e2e-ui/**/*`, `e2e/**/*`)
-- 기존 테스트 **케이스 설명(describe/test)만** 읽어서 커버리지 이해
+**`playwright.config.ts`를 사용하여 테스트 파일 찾기**:
+
+- playwright.config에서 `testDir` 또는 `testMatch`를 읽어 테스트 위치 찾기
+- config에서 패턴을 지정한 경우 해당 패턴 사용 (예: `tests/e2e/**/*.spec.ts`)
+- **폴백**: config에서 찾을 수 없는 경우, Glob으로 검색 (`**/*.e2e.{ts,tsx,js,jsx}`, `e2e-ui/**/*`, `e2e/**/*`)
+
+**기존 테스트 분석**:
+
+- 기존 테스트 **케이스 설명(describe/test/it) 전부** 읽어서 커버리지 이해
 - 테스트 패턴 및 구조 파악
 - **중요**: 기존 문서(`docs/e2e-ui/test-targets.md`)는 **읽지 않음** (삭제 후 새로 생성)
 
@@ -91,23 +103,32 @@ $ARGUMENTS
 
 **프론트엔드 구조 분석**:
 
-- Glob으로 라우트 정의 찾기
-  - Next.js: `app/**/page.{ts,tsx}`, `pages/**/*.{ts,tsx}`
-  - React Router: `src/routes/**/*.{ts,tsx}`, `src/pages/**/*.{ts,tsx}`
-  - SvelteKit: `src/routes/**/+page.svelte`
+- Glob으로 라우트 정의 찾기 (프로젝트 구조에 맞게 패턴 조정)
+  - **예시** (전체 목록 아님):
+    - Next.js: `app/**/page.{ts,tsx}`, `pages/**/*.{ts,tsx}`
+    - React Router: `src/routes/**/*.{ts,tsx}`, `src/pages/**/*.{ts,tsx}`
+    - 기타 프레임워크: 디렉토리 구조를 분석하여 그에 맞게 조정
 - 주요 페이지 컴포넌트 읽기
 - 사용자 플로우 및 상호작용 매핑
 - 주요 UI 컴포넌트 및 기능 목록화
+
+AI는 감지된 프레임워크와 프로젝트 구조를 기반으로 코드베이스를 유연하게 탐색해야 합니다.
 
 ### 4. 🎭 Playwright MCP 실제 브라우저 탐색 (필수)
 
 **이 단계가 가장 중요합니다!** 코드 분석만으로는 실제 사용자 경험을 알 수 없습니다.
 
+**`playwright.config.ts`에서 base URL 가져오기**:
+
+- `webServer.url` 또는 `use.baseURL`을 읽어 애플리케이션 URL 가져오기
+- URL에서 포트 번호 추출
+- config에서 찾을 수 없는 경우, 사용자에게 base URL 제공 요청
+
 #### 4.1 초기 접속 및 기본 구조 파악
 
 ```javascript
-// MCP 도구 사용 예시
-browser_navigate: http://localhost:{port}
+// MCP 도구 사용 예시 (playwright.config.ts에서 가져온 URL 사용)
+browser_navigate: {config에서 가져온 baseURL}
 browser_snapshot: 초기 페이지 DOM 구조 캡처
 ```
 
@@ -120,8 +141,8 @@ browser_snapshot: 초기 페이지 DOM 구조 캡처
 코드에서 파악한 라우트 목록을 기반으로:
 
 ```javascript
-// 각 페이지마다
-browser_navigate: http://localhost:{port}/{route}
+// 각 페이지마다 (playwright.config.ts에서 가져온 baseURL 사용)
+browser_navigate: {config에서 가져온 baseURL}/{route}
 browser_snapshot: 페이지 DOM 구조 캡처
 ```
 
@@ -202,6 +223,19 @@ browser_snapshot: "로그인 후 상태";
 - 🎭 브라우저 탐색으로 발견
 - 📊🎭 양쪽에서 발견
 
+### 6. 기존 테스트와 대조 검증
+
+**테스트 시나리오를 정의한 후, 기존 E2E 테스트와 교차 확인**:
+
+- 정의한 시나리오를 기존 테스트 케이스(describe/test/it)와 비교
+- 중복되거나 겹치는 커버리지 식별
+- 시나리오를 다음과 같이 표시:
+  - ✨ 새 시나리오 (커버되지 않음)
+  - ✅ 이미 구현됨 (건너뛰거나 문서에 기록)
+  - 🔄 부분 커버 (기존 테스트 확장)
+
+이를 통해 중복 테스트 구현을 방지하고 커버리지 격차를 정확하게 식별할 수 있습니다.
+
 **우선순위 지정 (Critical/High/Medium)**:
 
 **Critical**: 실패 시 앱이 작동하지 않는 핵심 기능
@@ -226,13 +260,14 @@ browser_snapshot: "로그인 후 상태";
 
 1. **명확한 설명**: 무엇을 테스트하는지
 2. **출처**: 📊 코드 분석 | 🎭 브라우저 탐색
-3. **테스트 단계**: 상세한 사용자 액션
-4. **예상 결과**: 무엇이 일어나야 하는지
-5. **검증 포인트**: MCP 도구로 확인할 사항
-6. **우선순위 레벨**: Critical/High/Medium
-7. **의존성**: 필요한 설정 또는 이전 테스트
+3. **커버리지 상태**: ✨ 새 시나리오 | ✅ 이미 구현됨 | 🔄 부분 커버
+4. **테스트 단계**: 상세한 사용자 액션
+5. **예상 결과**: 무엇이 일어나야 하는지
+6. **검증 포인트**: MCP 도구로 확인할 사항
+7. **우선순위 레벨**: Critical/High/Medium
+8. **의존성**: 필요한 설정 또는 이전 테스트
 
-### 6. 이중 언어 문서 완전 새로 생성
+### 7. 이중 언어 문서 완전 새로 생성
 
 **생성할 파일**:
 
@@ -257,28 +292,37 @@ browser_snapshot: "로그인 후 상태";
 
 ### ✅ 반드시 해야 할 것
 
+- **`playwright.config.ts`와 `package.json` 먼저 읽기** 프로젝트 설정 가져오기
+  - playwright.config.ts: base URL, 테스트 디렉토리, 테스트 설정
+  - package.json: dependencies를 통한 프레임워크 감지 (next, react, vue 등)
 - **Playwright MCP로 실제 브라우저 탐색 필수** (코드 분석만으로 부족)
 - **문서는 항상 완전히 새로 생성** (기존 문서 삭제)
-- 기존 테스트 **파일의 케이스만** 읽어서 컨텍스트 파악
-- 프레임워크 자동 감지 및 적절한 스킬 로드
+- 기존 테스트 **파일의 케이스(describe/test/it) 전부** 읽어서 컨텍스트 파악
+- **기존 테스트와 시나리오 대조 검증**하여 중복 방지
+- playwright.config에서 테스트 디렉토리 사용 (필요 시 Glob 검색으로 폴백)
+- playwright.config에서 base URL 사용하여 브라우저 탐색
+- 다양한 프로젝트 구조에 유연하게 적응 (특정 패턴에 제한되지 않음)
 - 이중 언어 문서 동시 생성 (ko.md, .md)
 - 백엔드가 있으면 비즈니스 도메인 파악
 - 중요한 사용자 플로우 우선순위 지정
 - 정상 경로와 에러 케이스 모두 고려
 - 페이지/기능별로 관련 시나리오 그룹화
 - 각 테스트에 명확한 성공 기준 정의
-- 각 시나리오에 출처 표시 (📊 코드 | 🎭 브라우저)
+- 각 시나리오에 출처와 커버리지 상태 표시
 
 ### ❌ 절대 하지 말아야 할 것
 
+- **`playwright.config.ts` 읽기 건너뛰기** (주요 정보 출처)
 - **Playwright MCP 브라우저 탐색 건너뛰기**
 - **기존 docs/e2e-ui/test-targets.md 문서 읽거나 참고** (오직 새로 생성만)
 - **기존 문서 내용을 보존하거나 병합** (완전 삭제 후 재생성)
+- URL이나 포트를 하드코딩 (playwright.config.ts 값 사용)
 - 버그 발견 시 사용자에게 피드백 (실행 단계에서 처리)
-- React/TypeScript 스킬만 하드코딩 (프레임워크 자동 감지 필요)
+- 특정 디렉토리/프레임워크 패턴에 제한됨 (유연성 필요)
 - 단일 언어 문서만 생성
 - 엣지 케이스 및 에러 상태 무시
 - 모호하거나 테스트 불가능한 시나리오 정의
+- 검증 없이 중복 테스트 시나리오 생성
 
 ### 🎯 테스트 시나리오 품질
 
@@ -286,11 +330,12 @@ browser_snapshot: "로그인 후 상태";
 
 1. **명확한 설명**: 무엇을 테스트하는지
 2. **출처**: 📊 코드 분석 | 🎭 브라우저 탐색
-3. **테스트 단계**: 상세한 사용자 액션
-4. **예상 결과**: 무엇이 일어나야 하는지
-5. **검증 포인트**: MCP 도구로 확인할 사항
-6. **우선순위 레벨**: Critical/High/Medium
-7. **의존성**: 필요한 설정 또는 이전 테스트
+3. **커버리지 상태**: ✨ 새 시나리오 | ✅ 이미 구현됨 | 🔄 부분 커버
+4. **테스트 단계**: 상세한 사용자 액션
+5. **예상 결과**: 무엇이 일어나야 하는지
+6. **검증 포인트**: MCP 도구로 확인할 사항
+7. **우선순위 레벨**: Critical/High/Medium
+8. **의존성**: 필요한 설정 또는 이전 테스트
 
 ---
 
@@ -393,17 +438,6 @@ browser_snapshot: "로그인 후 상태";
 
 ---
 
-## 📋 테스트 구현 순서
-
-권장 실행 순서 (의존성 고려):
-
-1. 테스트 N: {이름} (Critical - 의존성 없음)
-2. 테스트 M: {이름} (Critical - 테스트 N에 의존)
-3. 테스트 K: {이름} (High - 의존성 없음)
-   ...
-
----
-
 ## 🔧 기술적 고려사항
 
 ### Playwright MCP 도구
@@ -415,7 +449,8 @@ browser_snapshot: "로그인 후 상태";
 
 ### 테스트 환경
 
-- **Base URL**: http://localhost:{port}
+- **Base URL**: {playwright.config.ts에서 가져온 값 - webServer.url 또는 use.baseURL}
+- **테스트 디렉토리**: {playwright.config.ts에서 가져온 값 - testDir 또는 testMatch}
 - **필요한 서비스**: {백엔드, 데이터베이스 등}
 
 ### 테스트 데이터
@@ -431,6 +466,17 @@ browser_snapshot: "로그인 후 상태";
 - {알려진 버그나 불안정한 동작}
 - {환경별 고려사항}
 - {성능 관련 주의사항}
+
+---
+
+## 📋 테스트 구현 순서
+
+권장 실행 순서 (의존성 고려):
+
+1. 테스트 N: {이름} (Critical - 의존성 없음)
+2. 테스트 M: {이름} (Critical - 테스트 N에 의존)
+3. 테스트 K: {이름} (High - 의존성 없음)
+   ...
 ```
 
 ### 영어 버전: `docs/e2e-ui/test-targets.md`
