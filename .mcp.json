@@ -10,7 +10,7 @@
     },
     "playwright": {
       "command": "npx",
-      "args": ["-y", "@playwright/mcp@latest", "--headless", "--no-sandbox"]
+      "args": ["-y", "@playwright/mcp@latest", "--headless", "--no-sandbox", "--browser=chromium"]
     },
     "github": {
       "command": "npx",
