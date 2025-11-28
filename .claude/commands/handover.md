@@ -2,18 +2,16 @@
 description: Generate a comprehensive markdown summary of our conversation for seamless handoff to another AI agent
 ---
 
-## ⚠️ CRITICAL - MANDATORY ACTION
-
-**DO NOT just explain the format. ACTUALLY CREATE and SAVE the markdown file.**
-
-- **MUST** generate actual markdown file - this is NOT informational
-- **MUST** save to project root: `./handoff-summary-YYYYMMDD-HHMMSS.md`
-- **MUST** use Write tool to create the file immediately after analysis
-- **FAILURE** to create file = incomplete command execution
-
----
-
 # Conversation Handoff Summary
+
+## Required Output
+
+This command generates and saves a markdown file. Always:
+1. Analyze the conversation
+2. Create the file using Write tool
+3. Save to: `./handoff-summary-YYYYMMDD-HHMMSS.md`
+
+The purpose is file creation, not just information display.
 
 Generate comprehensive summary for AI agent handoff: $ARGUMENTS
 What This Command Does

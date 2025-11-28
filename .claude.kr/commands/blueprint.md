@@ -8,7 +8,7 @@ description: 장황한 자연어 요청을 구조화된 이중언어 문서로 �
 
 ## 이 커맨드의 목적
 
-**중요**: 이 커맨드는 모든 종류의 요청에 사용 가능합니다 - 기술적, 비기술적, 의사결정, 계획, 진로 상담, 개인 질문, 브레인스토밍 등. "기술적이지 않다"는 이유로 거절하지 마세요.
+이 커맨드는 모든 종류의 요청에 사용 가능합니다 - 기술적, 비기술적, 의사결정, 계획, 진로 상담, 개인 질문, 브레인스토밍 등. "기술적이지 않다"는 이유로 거절하지 마세요.
 
 사용자의 비정형적인 자연어 요청을 분석하여:
 
@@ -36,7 +36,7 @@ description: 장황한 자연어 요청을 구조화된 이중언어 문서로 �
 
 ## 출력 원칙
 
-**CRITICAL**: 상황에 맞게 유연하게 구조화하라. 불필요한 섹션을 강제로 채우지 말 것.
+상황에 맞게 유연하게 구조화하세요. 불필요한 섹션을 강제로 채우지 마세요 - 간단한 요청에는 간단한 구조가 더 효과적입니다.
 
 ### 기본 원칙
 
@@ -76,7 +76,7 @@ description: 장황한 자연어 요청을 구조화된 이중언어 문서로 �
 
 ## 📋 English Version (For AI Prompt)
 
-> **CRITICAL: All responses, conversations, and outputs MUST be in Korean (한글).**
+> **언어 요구사항: 모든 응답, 대화, 출력은 한국어(한글)로 작성해야 합니다.**
 >
 > This section is optimized for AI agent consumption. The AI agent must communicate entirely in Korean regardless of the prompt language.
 
@@ -127,7 +127,7 @@ description: 장황한 자연어 요청을 구조화된 이중언어 문서로 �
 
 ## 📋 English Version
 
-> **CRITICAL: All responses must be in Korean.**
+> **언어: 한국어로 응답하세요.**
 
 ### 🎯 Request Overview
 
@@ -177,7 +177,7 @@ Clear decision-making framework with reasoning for each option
 
 ## 📋 English Version
 
-> **CRITICAL: All responses must be in Korean.**
+> **언어: 한국어로 응답하세요.**
 
 [한글 버전과 동일한 구조]
 ```
@@ -230,7 +230,7 @@ JWT 기반 인증을 OAuth2로 마이그레이션하면서 기존 사용자 세�
 
 ## 📋 English Version
 
-> **CRITICAL: All responses must be in Korean.**
+> **언어: 한국어로 응답하세요.**
 
 [same structure as Korean version]
 ```
@@ -305,7 +305,7 @@ JWT 기반 인증을 OAuth2로 마이그레이션하면서 기존 사용자 세�
 
 ## 작성 가이드라인
 
-**핵심 원칙: 절대 추측하거나 추론하지 말 것. 사용자가 명시적으로 말한 내용만 기록할 것.**
+사용자가 명시적으로 말한 내용만 기록하세요. 이는 할루시네이션을 방지하고 사용자 의도를 정확히 반영합니다.
 
 문서 생성 시:
 
