@@ -30,10 +30,11 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 2. **Check Prerequisites**:
    - Verify `docs/work/WORK-{task-name}/analysis.md` exists
-   - If not, ERROR: "Run /workflow:analyze first for WORK-{task-name}"
+   - If not exists, use $ARGUMENTS as requirements source and proceed
 
-3. **Load Analysis Document**:
-   - Extract selected approach and completion criteria from analysis.md
+3. **Load Requirements**:
+   - If analysis.md exists: Extract selected approach and completion criteria
+   - If not: Interpret user input as requirements (description, URL, file path, etc.)
 
 4. **Reference Skills**:
    - Check `.claude/skills/` frontmatter

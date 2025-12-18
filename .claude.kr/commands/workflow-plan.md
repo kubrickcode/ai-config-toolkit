@@ -30,10 +30,11 @@ $ARGUMENTS
 
 2. **전제조건 확인**:
    - `docs/work/WORK-{작업명}/analysis.md` 존재 확인
-   - 없으면 오류: "WORK-{작업명}에 대해 먼저 /workflow:analyze를 실행하세요"
+   - 없으면 $ARGUMENTS를 요구사항 소스로 사용하여 진행
 
-3. **분석 문서 로드**:
-   - analysis.md에서 선택된 방안, 완료 조건 추출
+3. **요구사항 로드**:
+   - analysis.md 있으면: 선택된 방안, 완료 조건 추출
+   - 없으면: 사용자 입력을 요구사항으로 해석 (설명, URL, 파일 경로 등)
 
 4. **Skills 참조**:
    - `.claude/skills/` 메타데이터 확인
