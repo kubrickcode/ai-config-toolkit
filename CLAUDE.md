@@ -33,6 +33,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **IMPORTANT**
 
+- Comments are technical debt - minimize aggressively
+  - WHY only: business rules, external constraints, legal requirements, counter-intuitive decisions
+  - NEVER: code flow narration, WHAT explanations, name compensation, section dividers, commented-out code
+  - If code needs a comment to explain WHAT it does, fix the code (rename, extract function) instead
+  - Default stance: "Can I eliminate this comment with better code?" → Yes in 90% of cases
 - Avoid unfounded assumptions - verify critical details
   - Don't guess file paths - use Glob/Grep to find them
   - Don't guess API contracts or function signatures - read the actual code
