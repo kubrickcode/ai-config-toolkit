@@ -10,12 +10,12 @@ description: Generate implementation plan with commit-level tasks
 $ARGUMENTS
 ```
 
-Expected format: `/workflow:plan TASK-NAME [additional requirements]`
+Expected format: `/workflow-plan TASK-NAME [additional requirements]`
 
 Example:
 
-- `/workflow:plan REFACTORING limit to 3 commits`
-- `/workflow:plan API-REDESIGN keep backward compatibility`
+- `/workflow-plan REFACTORING limit to 3 commits`
+- `/workflow-plan API-REDESIGN keep backward compatibility`
 
 You **MUST** consider the user input before proceeding (if not empty).
 
@@ -26,7 +26,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 1. **Parse User Input**:
    - Extract task name from first word of $ARGUMENTS (e.g., "REFACTORING")
    - Extract additional requirements from remaining text (e.g., "limit to 3 commits")
-   - If task name missing, ERROR: "Please provide task name: /workflow:plan TASK-NAME"
+   - If task name missing, ERROR: "Please provide task name: /workflow-plan TASK-NAME"
 
 2. **Check Prerequisites**:
    - Verify `docs/work/WORK-{task-name}/analysis.md` exists

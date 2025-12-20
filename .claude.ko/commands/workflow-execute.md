@@ -12,14 +12,14 @@ $ARGUMENTS
 
 예상 형식:
 
-- `/workflow:execute 작업명 N` (작업명과 커밋 번호)
-- `/workflow:execute N` (커밋 번호만 - 최근 plan.md 검색)
+- `/workflow-execute 작업명 N` (작업명과 커밋 번호)
+- `/workflow-execute N` (커밋 번호만 - 최근 plan.md 검색)
 
 예시:
 
-- `/workflow:execute REFACTORING 1`
-- `/workflow:execute API-REDESIGN 2`
-- `/workflow:execute 1` (최근 plan.md 사용)
+- `/workflow-execute REFACTORING 1`
+- `/workflow-execute API-REDESIGN 2`
+- `/workflow-execute 1` (최근 plan.md 사용)
 
 ---
 
@@ -33,11 +33,11 @@ $ARGUMENTS
    - $ARGUMENTS에 숫자만 있는 경우 (예: "1"):
      - 커밋 번호 추출
      - `docs/work/WORK-*/`에서 가장 최근 수정된 `plan.md` 찾기
-     - 없으면 오류: "plan.md를 찾을 수 없습니다. 사용법: /workflow:execute 작업명 N"
+     - 없으면 오류: "plan.md를 찾을 수 없습니다. 사용법: /workflow-execute 작업명 N"
 
 2. **전제조건 확인**:
    - 대상 `plan.md` 존재 확인
-   - 없으면 오류: "WORK-{작업명}에 대해 먼저 /workflow:plan을 실행하세요"
+   - 없으면 오류: "WORK-{작업명}에 대해 먼저 /workflow-plan을 실행하세요"
 
 3. **컨텍스트 로딩**:
    - **필수**: plan.md의 해당 커밋 체크리스트 읽기

@@ -21,7 +21,7 @@ $ARGUMENTS
 
 1. **전제조건 확인**:
    - `docs/work/WORK-{name}/analysis.md` 존재 확인
-   - 없으면 오류: "Run /workflow:analyze first"
+   - 없으면 오류: "/workflow-analyze를 먼저 실행하세요"
 
 2. **분석 문서 로드**:
    - analysis.md에서 선택된 접근법 추출
@@ -197,7 +197,7 @@ $ARGUMENTS
 
 ## ✅ 권장사항
 
-**다음 단계**: `/workflow:plan` 진행 / `/workflow:analyze` 재검토
+**다음 단계**: `/workflow-plan` 진행 / `/workflow-analyze` 재검토
 
 **구현시 주의사항**:
 
@@ -286,7 +286,7 @@ $ARGUMENTS
 
 **다음 단계**:
 
-- 검증 성공시: `/workflow:plan` 진행
+- 검증 성공시: `/workflow-plan` 진행
 - 문제 발견시: 대안 논의 필요
 ```
 
@@ -299,7 +299,7 @@ $ARGUMENTS
 - 모든 핵심 기술적 가정 검증됨
 - 차단 이슈 없음
 - 구현 경로 명확
-- **다음**: `/workflow:plan` 진행
+- **다음**: `/workflow-plan` 진행
 
 ### ⚠️ 부분 성공 기준
 
@@ -313,7 +313,7 @@ $ARGUMENTS
 - 핵심 접근법 실현 불가능
 - 우회 방법 없는 차단 이슈
 - 근본적인 가정 무효
-- **다음**: `/workflow:analyze` 재검토 필요
+- **다음**: `/workflow-analyze` 재검토 필요
 
 ---
 

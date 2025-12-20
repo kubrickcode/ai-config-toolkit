@@ -12,14 +12,14 @@ $ARGUMENTS
 
 Expected format:
 
-- `/workflow:execute TASK-NAME N` (task name and commit number)
-- `/workflow:execute N` (commit number only - searches for most recent plan.md)
+- `/workflow-execute TASK-NAME N` (task name and commit number)
+- `/workflow-execute N` (commit number only - searches for most recent plan.md)
 
 Examples:
 
-- `/workflow:execute REFACTORING 1`
-- `/workflow:execute API-REDESIGN 2`
-- `/workflow:execute 1` (uses most recent plan.md)
+- `/workflow-execute REFACTORING 1`
+- `/workflow-execute API-REDESIGN 2`
+- `/workflow-execute 1` (uses most recent plan.md)
 
 ---
 
@@ -33,11 +33,11 @@ Examples:
    - If $ARGUMENTS contains only number (e.g., "1"):
      - Extract commit number
      - Find most recently modified `plan.md` in `docs/work/WORK-*/`
-     - If not found, ERROR: "No plan.md found. Use: /workflow:execute TASK-NAME N"
+     - If not found, ERROR: "No plan.md found. Use: /workflow-execute TASK-NAME N"
 
 2. **Check Prerequisites**:
    - Verify target `plan.md` exists
-   - If not, ERROR: "Run /workflow:plan first for WORK-{task-name}"
+   - If not, ERROR: "Run /workflow-plan first for WORK-{task-name}"
 
 3. **Load Context**:
    - **Required**: Read checklist for the commit in plan.md

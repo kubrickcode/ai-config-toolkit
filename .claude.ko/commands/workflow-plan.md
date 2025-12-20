@@ -10,12 +10,12 @@ description: 커밋 단위 작업이 포함된 구현 계획 생성
 $ARGUMENTS
 ```
 
-예상 형식: `/workflow:plan 작업명 [추가 요구사항]`
+예상 형식: `/workflow-plan 작업명 [추가 요구사항]`
 
 예시:
 
-- `/workflow:plan REFACTORING 커밋 3개 이내로`
-- `/workflow:plan API-REDESIGN 하위 호환성 유지`
+- `/workflow-plan REFACTORING 커밋 3개 이내로`
+- `/workflow-plan API-REDESIGN 하위 호환성 유지`
 
 빈 값이 아니면 사용자 입력을 **반드시** 고려해야 합니다.
 
@@ -26,7 +26,7 @@ $ARGUMENTS
 1. **사용자 입력 파싱**:
    - $ARGUMENTS의 첫 단어에서 작업명 추출 (예: "REFACTORING")
    - 나머지 텍스트에서 추가 요구사항 추출 (예: "커밋 3개 이내로")
-   - 작업명이 없으면 오류: "작업명을 제공하세요: /workflow:plan 작업명"
+   - 작업명이 없으면 오류: "작업명을 제공하세요: /workflow-plan 작업명"
 
 2. **전제조건 확인**:
    - `docs/work/WORK-{작업명}/analysis.md` 존재 확인
