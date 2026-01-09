@@ -8,6 +8,20 @@
 - Boolean 변수는 `is`, `has`, `should` 접두사 사용
 - 함수명은 동사 또는 동사+명사 형태
 
+## 제네릭 동사 금지
+
+AI가 모호한 제네릭 동사를 남발함. 도메인 특화 동사 사용 필수:
+
+| 금지                       | 대안                                        |
+| -------------------------- | ------------------------------------------- |
+| `process`                  | `validate`, `transform`, `parse`, `compute` |
+| `handle`                   | `catch`, `recover`, `dispatch`, `route`     |
+| `manage`                   | `allocate`, `schedule`, `coordinate`        |
+| `do`, `execute`, `perform` | 구체적인 동작 동사                          |
+| `get` (부수효과 있을 때)   | `fetch`, `load`, `retrieve`, `query`        |
+
+예외: 이벤트 핸들러 (`onClick`, `handleSubmit`)는 허용.
+
 ## 복수형 규칙
 
 - 순수 배열/슬라이스: "s" 접미사 (`users`)

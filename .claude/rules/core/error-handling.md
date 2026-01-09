@@ -19,3 +19,11 @@
 - Always handle Promise rejection
 - Use try-catch for async/await
 - Use .catch() for promise chains
+
+## AI Error Handling Warning
+
+AI tends to generate catch-all handlers that swallow errors silently:
+
+- **Never**: `catch (e) { }` or `catch (e) { console.log(e) }`
+- **Always**: Log with context and either re-throw or return error result
+- **Require**: Every catch block must either propagate, recover with fallback, or explicitly handle

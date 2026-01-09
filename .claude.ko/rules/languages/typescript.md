@@ -62,6 +62,15 @@ paths:
 - TypeScript 한계로 타입 가드 후 타입 좁히기 불가능 시 "!" assertion 허용
 - 테스트 코드에서만 @ts-ignore, @ts-expect-error 허용 (프로덕션 절대 금지)
 
+### AI 타입 안전성 강화
+
+AI가 편의를 위해 타입 안전성을 자주 위반함. 명시적 정당화 필수:
+
+- **모든 `any`에 주석 필수**: `// any: 외부 API가 타입 없는 응답 반환`
+- **모든 `as`에 주석 필수**: `// as: 검증 후 unknown에서 narrowing`
+- **모든 `!`에 주석 필수**: `// !: X번 줄의 null 체크로 보장됨`
+- **assertion보다 타입 가드 우선**: `x as User` 대신 `isUser(x)` 사용
+
 ### Interface vs Type
 
 - 기본적으로 모든 경우 Type 우선
@@ -82,10 +91,18 @@ paths:
 
 ### 불변성 유지
 
-- 가능한 한 `const` 사용, `let` 최소화
+- `const` 전용 사용; `let`은 루프나 재할당이 필수인 경우만
 - 배열/객체 직접 수정 대신 새 값 생성
-- `push`, `splice` 대신 `spread`, `filter`, `map` 사용
-- 예외: 극도로 성능이 중요한 경우
+- `push`, `splice`, `sort` (in-place 변경) 대신 `spread`, `filter`, `map` 사용
+- 예외: 극도로 성능이 중요한 경우 (이유 주석 필수)
+
+### AI 불변성 강화
+
+AI는 자연스럽게 mutable 코드를 생성함. 엄격한 제약 적용:
+
+- **금지**: `array.push()`, `array.splice()`, `array.sort()`, `object.prop = value`
+- **대안**: `[...array, item]`, `array.filter()`, `[...array].sort()`, `{ ...object, prop: value }`
+- **리뷰 플래그**: 루프 컨텍스트 없는 `let` 선언
 
 ## 권장 라이브러리
 

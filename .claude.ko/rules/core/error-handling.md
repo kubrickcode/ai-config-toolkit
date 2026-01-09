@@ -19,3 +19,11 @@
 - Promise rejection 항상 처리
 - async/await에는 try-catch 사용
 - promise chain에는 .catch() 사용
+
+## AI 에러 처리 경고
+
+AI가 에러를 조용히 삼키는 catch-all 핸들러 생성 경향:
+
+- **금지**: `catch (e) { }` 또는 `catch (e) { console.log(e) }`
+- **필수**: 컨텍스트와 함께 로그하고 re-throw 또는 에러 결과 반환
+- **요구**: 모든 catch 블록은 전파, 폴백 복구, 또는 명시적 처리 필수
