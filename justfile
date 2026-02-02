@@ -25,7 +25,6 @@ lint target="all":
         ;;
     esac
 
-# 단일 파일 린트 (hooks에서 호출)
 lint-file file:
     #!/usr/bin/env bash
     set -euo pipefail
