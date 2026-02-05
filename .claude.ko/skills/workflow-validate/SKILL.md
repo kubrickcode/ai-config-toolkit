@@ -22,7 +22,7 @@ $ARGUMENTS
 ## 개요
 
 1. **전제조건 확인**:
-   - `docs/work/WORK-{name}/analysis.md` 존재 확인
+   - `docs/work/{name}/analysis.md` 존재 확인
    - 없으면 오류: "/workflow-analyze를 먼저 실행하세요"
 
 2. **분석 문서 로드**:
@@ -48,8 +48,8 @@ $ARGUMENTS
    - 발견사항 및 제약사항 문서화
 
 6. **문서 작성** (이중 언어):
-   - `docs/work/WORK-{name}/validation.ko.md` 생성 (한글 - 사용자 참고용)
-   - `docs/work/WORK-{name}/validation.md` 생성 (영어 - 에이전트 실행용)
+   - `docs/work/{name}/validation.ko.md` 생성 (한글 - 사용자 참고용)
+   - `docs/work/{name}/validation.md` 생성 (영어 - 에이전트 실행용)
    - 명확한 다음 단계 권장사항 포함
 
 ---
@@ -123,8 +123,8 @@ $ARGUMENTS
 
 생성할 파일:
 
-- `docs/work/WORK-{작업명}/validation.ko.md` (한글 버전)
-- `docs/work/WORK-{작업명}/validation.md` (영어 버전)
+- `docs/work/{작업명}/validation.ko.md` (한글 버전)
+- `docs/work/{작업명}/validation.md` (영어 버전)
 
 ### 템플릿 A: AI 완료 검증
 

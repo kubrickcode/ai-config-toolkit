@@ -31,7 +31,7 @@ $ARGUMENTS
    - 작업명이 없으면 오류: "작업명을 제공하세요: /workflow-plan 작업명"
 
 2. **전제조건 확인**:
-   - `docs/work/WORK-{작업명}/analysis.md` 존재 확인
+   - `docs/work/{작업명}/analysis.md` 존재 확인
    - 없으면 $ARGUMENTS를 요구사항 소스로 사용하여 진행
 
 3. **요구사항 로드**:
@@ -57,8 +57,8 @@ $ARGUMENTS
    - 코딩 원칙 위반 필요 시 복잡도 추적 테이블 작성
 
 7. **문서 작성** (이중 언어):
-   - `docs/work/WORK-{name}/plan.ko.md` 생성 (한글 - 사용자 참고용)
-   - `docs/work/WORK-{name}/plan.md` 생성 (영어 - 에이전트 실행용)
+   - `docs/work/{name}/plan.ko.md` 생성 (한글 - 사용자 참고용)
+   - `docs/work/{name}/plan.md` 생성 (영어 - 에이전트 실행용)
 
 ---
 
@@ -159,8 +159,8 @@ $ARGUMENTS
 
 생성할 파일:
 
-- `docs/work/WORK-{작업명}/plan.ko.md` (한글 버전)
-- `docs/work/WORK-{작업명}/plan.md` (영어 버전)
+- `docs/work/{작업명}/plan.ko.md` (한글 버전)
+- `docs/work/{작업명}/plan.md` (영어 버전)
 
 ```markdown
 # [작업명] - 실행 계획

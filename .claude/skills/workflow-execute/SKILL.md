@@ -31,15 +31,15 @@ Examples:
    - If $ARGUMENTS contains two parts (e.g., "REFACTORING 1"):
      - Extract task name from first part (e.g., "REFACTORING")
      - Extract commit number from second part (e.g., 1)
-     - Target: `docs/work/WORK-{task-name}/plan.md`
+     - Target: `docs/work/{task-name}/plan.md`
    - If $ARGUMENTS contains only number (e.g., "1"):
      - Extract commit number
-     - Find most recently modified `plan.md` in `docs/work/WORK-*/`
+     - Find most recently modified `plan.md` in `docs/work/*/`
      - If not found, ERROR: "No plan.md found. Use: /workflow-execute TASK-NAME N"
 
 2. **Check Prerequisites**:
    - Verify target `plan.md` exists
-   - If not, ERROR: "Run /workflow-plan first for WORK-{task-name}"
+   - If not, ERROR: "Run /workflow-plan first for {task-name}"
 
 3. **Load Context**:
    - **Required**: Read checklist for the commit in plan.md
@@ -56,7 +56,7 @@ Examples:
    - Verify behavior
 
 6. **Generate/Overwrite Summary**:
-   - Create `docs/work/WORK-{task-name}/summary-commit-N.md`
+   - Create `docs/work/{task-name}/summary-commit-N.md`
    - Overwrite if existing file (keep only final state)
 
 7. **Report Completion**:
@@ -120,7 +120,7 @@ Examples:
 
 ## Document Template
 
-File to create: `docs/work/WORK-{task-name}/summary-commit-N.md`
+File to create: `docs/work/{task-name}/summary-commit-N.md`
 
 ```markdown
 # Commit N: [Title]

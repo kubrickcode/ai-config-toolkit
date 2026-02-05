@@ -52,8 +52,8 @@ Execute **exactly as `/workflow-analyze`** command:
 4. Select final approach with rejection reasons
 5. Generate clarification questions (max 3)
 6. Write documents:
-   - `docs/work/WORK-{task-name}/analysis.ko.md`
-   - `docs/work/WORK-{task-name}/analysis.md`
+   - `docs/work/{task-name}/analysis.ko.md`
+   - `docs/work/{task-name}/analysis.md`
 
 **Use the full template from workflow-analyze** (not simplified).
 
@@ -71,8 +71,8 @@ Execute **exactly as `/workflow-plan`** command, with one constraint:
 4. **Create single commit plan** (no commit splitting)
 5. Review principle violations if any
 6. Write documents:
-   - `docs/work/WORK-{task-name}/plan.ko.md`
-   - `docs/work/WORK-{task-name}/plan.md`
+   - `docs/work/{task-name}/plan.ko.md`
+   - `docs/work/{task-name}/plan.md`
 
 **Use the full template from workflow-plan** (not simplified).
 
@@ -92,7 +92,7 @@ Execute **exactly as `/workflow-execute`** command:
 4. Write tests
 5. Verify (run tests, check behavior)
 6. Generate summary:
-   - `docs/work/WORK-{task-name}/summary-commit-1.md`
+   - `docs/work/{task-name}/summary-commit-1.md`
 7. Report completion
 
 **Use the full template from workflow-execute** (not simplified).
@@ -139,7 +139,7 @@ Execute **exactly as `/commit`** command:
 Same as individual commands:
 
 ```
-docs/work/WORK-{task-name}/
+docs/work/{task-name}/
 ├── analysis.ko.md          (Korean - from workflow-analyze)
 ├── analysis.md             (English - from workflow-analyze)
 ├── plan.ko.md              (Korean - from workflow-plan)

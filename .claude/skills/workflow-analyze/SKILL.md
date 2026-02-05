@@ -39,8 +39,8 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Use reasonable defaults + Assumptions for the rest
 
 6. **Write Documents** (Dual Language):
-   - Create `docs/work/WORK-{task-name}/analysis.ko.md` (Korean - for user reference)
-   - Create `docs/work/WORK-{task-name}/analysis.md` (English - for agent consumption)
+   - Create `docs/work/{task-name}/analysis.ko.md` (Korean - for user reference)
+   - Create `docs/work/{task-name}/analysis.md` (English - for agent consumption)
 
 ---
 
@@ -106,8 +106,8 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Files to create:
 
-- `docs/work/WORK-{task-name}/analysis.ko.md` (Korean version)
-- `docs/work/WORK-{task-name}/analysis.md` (English version)
+- `docs/work/{task-name}/analysis.ko.md` (Korean version)
+- `docs/work/{task-name}/analysis.md` (English version)
 
 ```markdown
 # [Task Name] - Analysis Result

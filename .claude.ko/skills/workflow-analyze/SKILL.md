@@ -39,8 +39,8 @@ $ARGUMENTS
    - 나머지는 합리적 기본값 + 가정
 
 6. **문서 작성** (이중 언어):
-   - `docs/work/WORK-{작업명}/analysis.ko.md` 생성 (한글 - 사용자 참고용)
-   - `docs/work/WORK-{작업명}/analysis.md` 생성 (영어 - 에이전트 실행용)
+   - `docs/work/{작업명}/analysis.ko.md` 생성 (한글 - 사용자 참고용)
+   - `docs/work/{작업명}/analysis.md` 생성 (영어 - 에이전트 실행용)
    - 두 버전 모두 아래 템플릿 구조 사용
 
 ---
@@ -107,8 +107,8 @@ $ARGUMENTS
 
 생성할 파일:
 
-- `docs/work/WORK-{작업명}/analysis.ko.md` (한글 버전)
-- `docs/work/WORK-{작업명}/analysis.md` (영어 버전)
+- `docs/work/{작업명}/analysis.ko.md` (한글 버전)
+- `docs/work/{작업명}/analysis.md` (영어 버전)
 
 ```markdown
 # [작업명] - 분석 결과

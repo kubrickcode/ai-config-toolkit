@@ -52,8 +52,8 @@ $ARGUMENTS
 4. 최종 방안 선택 및 반려 이유 명시
 5. 확인 질문 생성 (최대 3개)
 6. 문서 작성:
-   - `docs/work/WORK-{작업명}/analysis.ko.md`
-   - `docs/work/WORK-{작업명}/analysis.md`
+   - `docs/work/{작업명}/analysis.ko.md`
+   - `docs/work/{작업명}/analysis.md`
 
 **workflow-analyze의 전체 템플릿 사용** (간소화 X).
 
@@ -71,8 +71,8 @@ $ARGUMENTS
 4. **단일 커밋 계획 수립** (커밋 분리 없음)
 5. 원칙 위반 시 정당화 검토
 6. 문서 작성:
-   - `docs/work/WORK-{작업명}/plan.ko.md`
-   - `docs/work/WORK-{작업명}/plan.md`
+   - `docs/work/{작업명}/plan.ko.md`
+   - `docs/work/{작업명}/plan.md`
 
 **workflow-plan의 전체 템플릿 사용** (간소화 X).
 
@@ -93,7 +93,7 @@ $ARGUMENTS
 5. 테스트 작성
 6. 검증 (테스트 실행, 동작 확인)
 7. 요약 생성:
-   - `docs/work/WORK-{작업명}/summary-commit-1.md`
+   - `docs/work/{작업명}/summary-commit-1.md`
 8. 완료 보고
 
 **workflow-execute의 전체 템플릿 사용** (간소화 X).
@@ -140,7 +140,7 @@ $ARGUMENTS
 개별 커맨드와 동일:
 
 ```
-docs/work/WORK-{작업명}/
+docs/work/{작업명}/
 ├── analysis.ko.md          (한글 - workflow-analyze)
 ├── analysis.md             (영어 - workflow-analyze)
 ├── plan.ko.md              (한글 - workflow-plan)

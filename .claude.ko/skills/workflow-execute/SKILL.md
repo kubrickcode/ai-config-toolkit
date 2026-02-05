@@ -31,15 +31,15 @@ $ARGUMENTS
    - $ARGUMENTS에 두 부분이 있는 경우 (예: "REFACTORING 1"):
      - 첫 부분에서 작업명 추출 (예: "REFACTORING")
      - 두 번째 부분에서 커밋 번호 추출 (예: 1)
-     - 대상: `docs/work/WORK-{작업명}/plan.md`
+     - 대상: `docs/work/{작업명}/plan.md`
    - $ARGUMENTS에 숫자만 있는 경우 (예: "1"):
      - 커밋 번호 추출
-     - `docs/work/WORK-*/`에서 가장 최근 수정된 `plan.md` 찾기
+     - `docs/work/*/`에서 가장 최근 수정된 `plan.md` 찾기
      - 없으면 오류: "plan.md를 찾을 수 없습니다. 사용법: /workflow-execute 작업명 N"
 
 2. **전제조건 확인**:
    - 대상 `plan.md` 존재 확인
-   - 없으면 오류: "WORK-{작업명}에 대해 먼저 /workflow-plan을 실행하세요"
+   - 없으면 오류: "{작업명}에 대해 먼저 /workflow-plan을 실행하세요"
 
 3. **컨텍스트 로딩**:
    - **필수**: plan.md의 해당 커밋 체크리스트 읽기
@@ -56,7 +56,7 @@ $ARGUMENTS
    - 동작 확인
 
 6. **요약 생성/덮어쓰기**:
-   - `docs/work/WORK-{작업명}/summary-commit-N.md` 생성
+   - `docs/work/{작업명}/summary-commit-N.md` 생성
    - 기존 파일 있으면 덮어쓰기 (최종 상태만 유지)
 
 7. **완료 보고**:
@@ -120,7 +120,7 @@ $ARGUMENTS
 
 ## 문서 템플릿
 
-생성할 파일: `docs/work/WORK-{작업명}/summary-commit-N.md`
+생성할 파일: `docs/work/{작업명}/summary-commit-N.md`
 
 ```markdown
 # 커밋 N: [제목]

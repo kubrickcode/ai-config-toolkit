@@ -31,7 +31,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    - If task name missing, ERROR: "Please provide task name: /workflow-plan TASK-NAME"
 
 2. **Check Prerequisites**:
-   - Verify `docs/work/WORK-{task-name}/analysis.md` exists
+   - Verify `docs/work/{task-name}/analysis.md` exists
    - If not exists, use $ARGUMENTS as requirements source and proceed
 
 3. **Load Requirements**:
@@ -57,8 +57,8 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Create Complexity Tracking table if coding principle violations are necessary
 
 7. **Write Documents** (Dual Language):
-   - Create `docs/work/WORK-{name}/plan.ko.md` (Korean - for user reference)
-   - Create `docs/work/WORK-{name}/plan.md` (English - for agent consumption)
+   - Create `docs/work/{name}/plan.ko.md` (Korean - for user reference)
+   - Create `docs/work/{name}/plan.md` (English - for agent consumption)
 
 ---
 
@@ -168,8 +168,8 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Files to create:
 
-- `docs/work/WORK-{task-name}/plan.ko.md` (Korean version)
-- `docs/work/WORK-{task-name}/plan.md` (English version)
+- `docs/work/{task-name}/plan.ko.md` (Korean version)
+- `docs/work/{task-name}/plan.md` (English version)
 
 ```markdown
 # [Task Name] - Implementation Plan

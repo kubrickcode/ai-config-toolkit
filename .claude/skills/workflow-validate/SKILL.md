@@ -22,7 +22,7 @@ $ARGUMENTS
 ## Outline
 
 1. **Check Prerequisites**:
-   - Verify `docs/work/WORK-{name}/analysis.md` exists
+   - Verify `docs/work/{name}/analysis.md` exists
    - If not, ERROR: "Run /workflow-analyze first"
 
 2. **Load Analysis Document**:
@@ -48,8 +48,8 @@ $ARGUMENTS
    - Document findings and constraints
 
 6. **Write Documents** (Dual Language):
-   - Create `docs/work/WORK-{name}/validation.ko.md` (Korean - for user reference)
-   - Create `docs/work/WORK-{name}/validation.md` (English - for agent consumption)
+   - Create `docs/work/{name}/validation.ko.md` (Korean - for user reference)
+   - Create `docs/work/{name}/validation.md` (English - for agent consumption)
    - Include clear next steps recommendation
 
 ---
