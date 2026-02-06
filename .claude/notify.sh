@@ -2,7 +2,7 @@
 
 cat > /dev/null
 
-PROJECT_NAME=$(basename "$PWD")
+PROJECT_NAME=$(basename "$(git rev-parse --show-toplevel 2>/dev/null || echo "$PWD")")
 MESSAGE="${1:-✅ Work completed!}"
 FULL_MESSAGE="[$PROJECT_NAME] $MESSAGE"
 
