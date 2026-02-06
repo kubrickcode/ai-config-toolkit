@@ -39,7 +39,11 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Select **maximum 3** unclear items only
    - Use reasonable defaults + Assumptions for the rest
 
-6. **Write Document**:
+6. **ADR Assessment**:
+   - After completing the analysis, evaluate whether the decision meets ADR criteria (PRICE)
+   - If any PRICE criterion applies, add the ADR assessment section to the document
+
+7. **Write Document**:
    - Create `docs/work/{task-name}/analysis.md` (Korean)
 
 ---
@@ -289,6 +293,19 @@ File to create: `docs/work/{task-name}/analysis.md` (Korean)
 **If Needed**:
 
 - [Items needing additional confirmation - maximum 3]
+
+---
+
+## 📌 ADR Assessment
+
+<!-- Include this section ONLY when at least one PRICE criterion applies -->
+<!-- Omit entirely if no criterion applies -->
+
+**PRICE Criteria Met**: [P/R/I/C/E — list which apply with brief reason]
+**Recommendation**: Record as ADR before proceeding to planning phase
+**Suggested ADR Title**: `NNNN-short-description`
+
+> To create: `/adr [topic]`
 
 ---
 

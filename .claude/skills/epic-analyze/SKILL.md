@@ -42,12 +42,17 @@ You **MUST** consider the user input before proceeding (if not empty).
    - External dependencies or unknowns
    - Areas where the decomposition itself is uncertain
 
-6. **Assess Decomposition Confidence**:
+6. **ADR Assessment**:
+   - After decomposition, evaluate whether any project-level decisions meet ADR criteria (PRICE)
+   - Epic-level decisions often qualify: technology choices, architectural patterns, cross-cutting concerns
+   - If any PRICE criterion applies, add the ADR assessment section to the document
+
+7. **Assess Decomposition Confidence**:
    - Apply Decision Honesty rule (same as workflow-analyze)
    - **Confident**: Clear boundaries, well-understood domain
    - **Tentative**: Some boundaries may shift after early tasks reveal more
 
-7. **Write Document**:
+8. **Write Document**:
    - Create `docs/epic/{project-name}/analysis.md` (Korean)
 
 ---
@@ -212,6 +217,23 @@ Task 2 ──→ Task 4 ──┘
 **Phase 3**: [Task names — integration/polish]
 
 > Start with: `/workflow-analyze {task-1-name}`
+
+---
+
+## ADR Assessment
+
+<!-- Include this section ONLY when project-level decisions meet PRICE criteria -->
+<!-- Omit entirely if no criterion applies -->
+
+**Decisions requiring ADR**:
+
+- [Decision 1]: PRICE criteria [R, I] — [brief reason]
+- [Decision 2]: PRICE criteria [P] — [brief reason]
+
+**Recommendation**: Create ADRs before starting sub-task execution
+**Suggested Timing**: After epic analysis approval, before first `/workflow-analyze`
+
+> To create: `/adr [topic]`
 
 ---
 
