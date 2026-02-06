@@ -28,10 +28,24 @@ git status --porcelain
 
 **Decision:**
 
-- If changes exist: Review uncommitted changes via `git diff`
+- If changes exist: Review uncommitted changes via `git diff HEAD` (staged + unstaged)
 - If no changes: Review latest commit via `git log -1` and `git show HEAD`
+- If user specified a commit hash: Review that commit via `git show <hash>`
 
-### 2. Analyze Change Scope
+**Empty diff guard:** If no diff output is produced, report "No changes to review" and stop.
+
+### 2. Exclusion Patterns
+
+Filter out the following from diff analysis and agent prompts:
+
+- Lock files: `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`, `go.sum`, `Cargo.lock`
+- Generated/build: `dist/`, `build/`, `*.generated.*`, `*.min.*`
+- Source maps: `*.map`
+- Binary/media: images, fonts, compiled artifacts
+
+Use `git diff HEAD -- . ':!package-lock.json' ':!pnpm-lock.yaml' ':!yarn.lock' ':!go.sum' ':!Cargo.lock' ':!dist' ':!build'` to exclude these.
+
+### 3. Analyze Change Scope
 
 **Extract metrics from git output:**
 
@@ -45,55 +59,88 @@ Count:
 Detect:
 
 - Database migration files (`migrations/`, `schema.prisma`, `*.sql`)
-- API contract files (`*.graphql`, `openapi.yaml`, API route files)
-- Configuration files (`package.json`, `go.mod`, `docker-compose.yml`)
+- API contract files (`*.graphql`, `openapi.yaml`, `*.proto`, API route files)
+- Configuration files (`package.json`, `go.mod`, `pyproject.toml`, `Cargo.toml`, `build.gradle`, `docker-compose.yml`)
+- Infrastructure files (`*.tf`, `Dockerfile`, K8s manifests, CI/CD configs)
+- Security-sensitive files (`auth/`, `**/middleware/auth*`, `*.pem`, `*.key`)
 - New directories or modules
 
-### 3. Invoke code-reviewer Agent
+### 4. Invoke code-reviewer Agent
 
 **Always execute using Task tool with subagent_type: "code-reviewer":**
 
+Provide structured context to avoid redundant discovery:
+
 ```
-Perform comprehensive code review of the current changes.
+## Review Context
 
-Focus areas:
-- Code quality: readability, naming, structure
-- Security: exposed secrets, input validation, vulnerability patterns
-- Error handling: edge cases, error messages, recovery
-- Performance: obvious bottlenecks, inefficient patterns
-- Testing: coverage for critical paths
-- Coding standards compliance
+- **Target**: {uncommitted changes / commit <hash>}
+- **Work Type**: {feature/bugfix/refactor/chore/prototype}
+- **Commit Message**: {message from git log or commit_message.md}
 
-Changes to review:
-{paste git diff or git show output}
+## Scope Boundary
 
-Provide feedback organized by:
-- Critical issues (must fix before merge)
-- Warnings (should fix)
-- Suggestions (consider improving)
+Architecture concerns (component boundaries, module coupling, system scalability, deployment architecture) are out of scope. Do NOT review these.
 
-Include specific code examples and fix recommendations.
+## Diff
+
+{see diff size rules below}
 ```
 
-### 4. Conditional architect-reviewer Invocation
+**Diff size rules:**
+
+- **≤ 500 lines**: Include full diff inline
+- **> 500 lines**: Include `git diff --stat` summary only, and instruct: "Read specific files using Read tool as needed for detailed review."
+
+### 5. Conditional architect-reviewer Invocation
 
 **Scope Classification Criteria** (score each criterion met):
 
-| Criterion             | Threshold                                        | Score |
-| --------------------- | ------------------------------------------------ | ----- |
-| Files Modified        | ≥ 8 files                                        | +1    |
-| Total Lines Changed   | ≥ 300 lines                                      | +1    |
-| Directories Affected  | ≥ 3 directories                                  | +1    |
-| New Module/Package    | New directory with ≥3 files                      | +1    |
-| API Contract Changes  | Modified: schema/, .graphql, api/, route files   | +1    |
-| Database Schema       | Modified: migrations, schema files, ORM models   | +1    |
-| Config/Infrastructure | Modified: docker-compose, Dockerfile, K8s, CI/CD | +1    |
-| Dependency Changes    | Modified: package.json, go.mod, requirements.txt | +1    |
+| Criterion             | Threshold                                             | Score |
+| --------------------- | ----------------------------------------------------- | ----- |
+| Files Modified        | ≥ 8 files                                             | +1    |
+| Total Lines Changed   | ≥ 300 lines                                           | +1    |
+| Directories Affected  | ≥ 3 directories                                       | +1    |
+| New Module/Package    | New directory with ≥3 files                           | +1    |
+| API Contract Changes  | Modified: schema/, .graphql, .proto, api/, routes     | +2    |
+| Database Schema       | Modified: migrations, schema files, ORM models        | +2    |
+| Config/Infrastructure | Modified: docker-compose, Dockerfile, K8s, CI/CD, .tf | +1    |
+| Dependency Changes    | Modified: package.json, go.mod, requirements.txt      | +1    |
+| Security-Sensitive    | Modified: auth/, middleware/auth*, *.pem, \*.key      | +2    |
 
 **Decision**:
 
 - **Score < 3** → Invoke `code-reviewer` only
-- **Score ≥ 3** → Invoke both `code-reviewer` and `architect-reviewer`
+- **Score ≥ 3** → Invoke both `code-reviewer` and `architect-reviewer` **in parallel** (two Task calls in one message)
+
+**architect-reviewer structured context:**
+
+```
+## Review Context
+
+- **Target**: {uncommitted changes / commit <hash>}
+- **Work Type**: {feature/bugfix/refactor/chore/prototype}
+- **Commit Message**: {message}
+- **Scope Score**: {score} (triggered: {list of criteria met})
+- **Key Change Areas**: {directories/modules with most impact}
+
+## Scope Boundary
+
+Line-level code quality (naming, formatting, individual function logic, test coverage) is out of scope. Do NOT review these.
+
+## Diff
+
+{same diff size rules as code-reviewer}
+```
+
+---
+
+## Error Handling
+
+- **Empty diff** → Report "No changes to review" and stop
+- **Git command failure** → Report the error with the failed command
+- **Agent failure** → Include partial results from successful agent + note which agent failed
+- **Agent reports no issues** → Include "No issues found" in the relevant section
 
 ---
 
@@ -141,11 +188,11 @@ Based on agent feedback, generate action items:
 - [ ] {issue 1}
 - [ ] {issue 2}
 
-### High Priority (Should Fix)
+### Warning (Should Fix)
 
 - [ ] {issue 3}
 
-### Suggestions (Consider)
+### Suggestion (Consider)
 
 - [ ] {improvement 1}
 
