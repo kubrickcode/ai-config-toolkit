@@ -27,8 +27,8 @@ $ARGUMENTS
    - analysis.md가 태그되었으면: 결정, 선택지, 근거 추출 (증류, 복제 아님)
 
 3. **기존 ADR 스캔**:
-   - `docs/decisions/` 파일명을 읽어 다음 번호 결정
-   - 기존 ADR 프론트매터를 확인하여 중복 방지 또는 대체할 ADR 식별
+   - `docs/decisions/` 파일명 목록으로 다음 번호 결정 및 슬러그 기반 중복 후보 식별
+   - 후보 파일만 읽어 `status`, `name`, `description` 확인 후 대체 여부 판단
 
 4. **ADR 문서 작성**:
    - `docs/decisions/NNNN-slug.md` 생성 (한글)
@@ -69,7 +69,7 @@ $ARGUMENTS
 ### 📝 상태 값
 
 - `수락됨` (Accepted) — 새 ADR 기본값
-- `ADR-NNNN으로 대체됨` (Superseded by ADR-NNNN)
+- `대체됨` (Superseded) — `supersedes` 필드와 함께 사용
 - `폐기됨` (Deprecated)
 
 ---
@@ -96,8 +96,11 @@ $ARGUMENTS
 
 ```markdown
 ---
+name: [ADR 제목]
+description: [결정 사항 1줄 요약]
 status: 수락됨
 date: YYYY-MM-DD
+supersedes: null
 ---
 
 # ADR-NNNN: [제목]

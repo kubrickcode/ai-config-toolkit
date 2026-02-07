@@ -27,8 +27,8 @@ You **MUST** consider the user input before proceeding (if not empty).
    - If analysis.md is tagged: extract decision, options, and rationale from it (distill, don't duplicate)
 
 3. **Scan Existing ADRs**:
-   - Read file names in `docs/decisions/` to determine next number
-   - Check frontmatter of existing ADRs to avoid duplicates or find ADRs to supersede
+   - List file names in `docs/decisions/` to determine next number and identify potential duplicates by slug
+   - Read only candidate files (similar slug) to check `status`, `name`, `description` before superseding
 
 4. **Write ADR Document**:
    - Create `docs/decisions/NNNN-slug.md` (Korean)
@@ -69,7 +69,7 @@ When source material (analysis document, conversation) is available:
 ### Status Values
 
 - `수락됨` (Accepted) — default for new ADRs
-- `ADR-NNNN으로 대체됨` (Superseded by ADR-NNNN)
+- `대체됨` (Superseded) — use with `supersedes` field
 - `폐기됨` (Deprecated)
 
 ---
@@ -96,8 +96,11 @@ File to create: `docs/decisions/NNNN-slug.md` (Korean)
 
 ```markdown
 ---
+name: [ADR 제목]
+description: [결정 사항 1줄 요약]
 status: 수락됨
 date: YYYY-MM-DD
+supersedes: null
 ---
 
 # ADR-NNNN: [제목]
